@@ -1,0 +1,79 @@
+\section{Expanded Symbolic Coefficients}
+\label{sec:expanded_symbolic_coefficients}
+
+This section lists the expanded symbolic coefficients used by the analytical
+\newblock{geometric} quotients. These expressions are not intended as the practical
+implementation route; the main estimator uses the equivalent windowed matrix
+form. They are included here so that the closed-form geometric construction is
+fully auditable from terminal waveforms and their local derivatives.
+
+The coefficients for the three-wire delta parallel equivalent are:
+\begin{figure*}[!ht]
+	\centering
+	\begin{equation*}
+	\resizebox{0.98\textwidth}{!}{$
+	\begin{aligned}
+		s_{1234} &=({v''''_{bc}} {v'''_{ab}}-{v''''_{ab}} {v'''_{bc}}) ({v'_{bc}} {v_{ab}}-{v'_{ab}} {v_{bc}})
+		-\left({v'''_{ab}}^2-{v''''_{ab}} {v''_{ab}}\right) \left({v'_{bc}}^2-{v''_{bc}} {v_{bc}}\right)
+		+({v'''_{ab}} {v'''_{bc}}-{v''''_{ab}} {v''_{bc}}) ({v'_{ab}} {v'_{bc}}-{v''_{bc}} {v_{ab}})\\
+		&+({v'''_{ab}} {v'''_{bc}}-{v''''_{bc}} {v''_{ab}}) ({v'_{ab}} {v'_{bc}}-{v''_{ab}} {v_{bc}})
+		-\left({v'''_{bc}}^2-{v''''_{bc}} {v''_{bc}}\right) \left({v'_{ab}}^2-{v''_{ab}} {v_{ab}}\right)
+		+({v'''_{bc}} {v''_{ab}}-{v'''_{ab}} {v''_{bc}}) ({v''_{bc}} {v'_{ab}}-{v''_{ab}} {v'_{bc}})\\
+		s_{2346}&=({i''''_{b}} {v'''_{bc}}-{v''''_{bc}} {i'''_{b}}) ({v'_{bc}} {v_{ab}}-{v'_{ab}} {v_{bc}})+\left({v'_{bc}}^2-{v''_{bc}} {v_{bc}}\right) ({i'''_{b}} {v'''_{ab}}-{i''''_{b}} {v''_{ab}})
+		+({i'''_{b}} {v'''_{bc}}-{i''''_{b}} {v''_{bc}}) ({v''_{bc}} {v_{ab}}-{v'_{ab}} {v'_{bc}})\\
+		&+({v'''_{ab}} {v'''_{bc}}-{v''''_{bc}} {v''_{ab}}) ({i''_{b}} {v_{bc}}-{i'_{b}} {v'_{bc}})
+		+\left({v'''_{bc}}^2-{v''''_{bc}} {v''_{bc}}\right) ({i'_{b}} {v'_{ab}}-{i''_{b}} {v_{ab}})+({v'''_{bc}} {v''_{ab}}-{v'''_{ab}} {v''_{bc}}) ({i''_{b}} {v'_{bc}}-{v''_{bc}} {i'_{b}})\\
+		s_{1246}&=\left({v'_{bc}}^2-{v''_{bc}} {v_{bc}}\right) ({i''''_{b}} {v'''_{ab}}-{v''''_{ab}} {i'''_{b}})+({v''''_{bc}} {i'''_{b}}-{i''''_{b}} {v'''_{bc}}) ({v'_{ab}} {v'_{bc}}-{v''_{ab}} {v_{bc}})
+		+({i''''_{b}} {v''_{bc}}-{i'''_{b}} {v'''_{bc}}) ({v''_{bc}} {v'_{ab}}-{v''_{ab}} {v'_{bc}})\\
+		&+({v''''_{bc}} {v'''_{ab}}-{v''''_{ab}} {v'''_{bc}}) ({i''_{b}} {v_{bc}}-{i'_{b}} {v'_{bc}})
+		+({v'''_{ab}} {v'''_{bc}}-{v''''_{ab}} {v''_{bc}}) ({v''_{bc}} {i'_{b}}-{i''_{b}} {v'_{bc}})+\left({v'''_{bc}}^2-{v''''_{bc}} {v''_{bc}}\right) ({i''_{b}} {v'_{ab}}-{v''_{ab}} {i'_{b}})\\
+		s_{1346}&=({i''''_{b}} {v'''_{ab}}-{v''''_{ab}} {i'''_{b}}) ({v'_{bc}} {v_{ab}}-{v'_{ab}} {v_{bc}})-({i'''_{b}} {v'''_{ab}}-{i''''_{b}} {v''_{ab}}) ({v''_{ab}} {v_{bc}}-{v'_{ab}} {v'_{bc}})
+		+\left({v'_{ab}}^2-{v''_{ab}} {v_{ab}}\right) ({i''''_{b}} {v''_{bc}}-{i'''_{b}} {v'''_{bc}})\\
+		&+\left({v'''_{ab}}^2-{v''''_{ab}} {v''_{ab}}\right) ({i''_{b}} {v_{bc}}-{i'_{b}} {v'_{bc}})
+		+({v'''_{ab}} {v'''_{bc}}-{v''''_{ab}} {v''_{bc}}) ({i'_{b}} {v'_{ab}}-{i''_{b}} {v_{ab}})+({v'''_{bc}} {v''_{ab}}-{v'''_{ab}} {v''_{bc}}) ({i''_{b}} {v'_{ab}}-{v''_{ab}} {i'_{b}}) \\
+		s_{1236}&=({i''''_{b}} {v'''_{ab}}-{v''''_{ab}} {i'''_{b}}) ({v'_{ab}} {v'_{bc}}-{v''_{bc}} {v_{ab}})+\left({v'_{ab}}^2-{v''_{ab}} {v_{ab}}\right) ({v''''_{bc}} {i'''_{b}}-{i''''_{b}} {v'''_{bc}})
+		+({i'''_{b}} {v'''_{ab}}-{i''''_{b}} {v''_{ab}}) ({v''_{ab}} {v'_{bc}}-{v''_{bc}} {v'_{ab}})\\
+		&+({v''''_{bc}} {v'''_{ab}}-{v''''_{ab}} {v'''_{bc}}) ({i''_{b}} {v_{ab}}-{i'_{b}} {v'_{ab}})
+		+\left({v'''_{ab}}^2-{v''''_{ab}} {v''_{ab}}\right) ({v''_{bc}} {i'_{b}}-{i''_{b}} {v'_{bc}})+({v'''_{ab}} {v'''_{bc}}-{v''''_{bc}} {v''_{ab}}) ({i''_{b}} {v'_{ab}}-{v''_{ab}} {i'_{b}}) \\
+		s_{1345}&=({i''''_{a}} {v'''_{ab}}-{v''''_{ab}} {i'''_{a}}) ({v'_{bc}} {v_{ab}}-{v'_{ab}} {v_{bc}})-({i'''_{a}} {v'''_{ab}}-{i''''_{a}} {v''_{ab}}) ({v''_{ab}} {v_{bc}}-{v'_{ab}} {v'_{bc}})
+		+\left({v'_{ab}}^2-{v''_{ab}} {v_{ab}}\right) ({i''''_{a}} {v''_{bc}}-{i'''_{a}} {v'''_{bc}})\\
+		&+\left({v'''_{ab}}^2-{v''''_{ab}} {v''_{ab}}\right) ({i''_{a}} {v_{bc}}-{i'_{a}} {v'_{bc}})
+		+({v'''_{ab}} {v'''_{bc}}-{v''''_{ab}} {v''_{bc}}) ({i'_{a}} {v'_{ab}}-{i''_{a}} {v_{ab}})+({v'''_{bc}} {v''_{ab}}-{v'''_{ab}} {v''_{bc}}) ({i''_{a}} {v'_{ab}}-{v''_{ab}} {i'_{a}})\\
+		s_{1235}&=({i''''_{a}} {v'''_{ab}}-{v''''_{ab}} {i'''_{a}}) ({v'_{ab}} {v'_{bc}}-{v''_{bc}} {v_{ab}})
+		+\left({v'_{ab}}^2-{v''_{ab}} {v_{ab}}\right) ({v''''_{bc}} {i'''_{a}}-{i''''_{a}} {v'''_{bc}})
+		+({i'''_{a}} {v'''_{ab}}-{i''''_{a}} {v''_{ab}}) ({v''_{ab}} {v'_{bc}}-{v''_{bc}} {v'_{ab}})\\
+		&+({v''''_{bc}} {v'''_{ab}}-{v''''_{ab}} {v'''_{bc}}) ({i''_{a}} {v_{ab}}-{i'_{a}} {v'_{ab}})
+		+\left({v'''_{ab}}^2-{v''''_{ab}} {v''_{ab}}\right) ({v''_{bc}} {i'_{a}}-{i''_{a}} {v'_{bc}})+({v'''_{ab}} {v'''_{bc}}-{v''''_{bc}} {v''_{ab}}) ({i''_{a}} {v'_{ab}}-{v''_{ab}} {i'_{a}})
+	\end{aligned}
+	$}
+	\end{equation*}
+	\caption{Expanded delta-parallel symbolic coefficients used in the analytical \newblock{geometric} quotients.}
+	\label{fig:supp_delta_symbolic_coefficients}
+\end{figure*}
+
+The coefficients for the three-wire wye series equivalent are:
+\begin{figure*}[!ht]
+	\centering
+	\begin{equation*}
+	\resizebox{0.98\textwidth}{!}{$
+	\begin{aligned}
+		s_{1234} &={i'''''_{a}} \left({i''''_{b}} {i''_{a}} {i'_{b}}-{i''''_{b}} {i''_{b}} {i'_{a}}-{i'''_{b}} ({i'''_{a}} {i'_{b}}+{i''_{a}} {i''_{b}})+{i'''_{a}} {i''_{b}}^2+{i'''_{b}}^2 {i'_{a}}\right)+{i'''''_{b}} \left(-{i''''_{a}} {i''_{a}} {i'_{b}}+{i''''_{a}} {i''_{b}} {i'_{a}}+{i'''_{a}}^2 {i'_{b}}+{i'''_{b}} \left({i''_{a}}^2-{i'''_{a}} {i'_{a}}\right)-{i'''_{a}} {i''_{a}} {i''_{b}}\right)\\
+		&+{i''''_{b}} \left(-{i''''_{a}} {i'''_{b}} {i'_{a}}+{i''''_{a}} {i''_{a}} {i''_{b}}+{i''''_{b}} {i'''_{a}} {i'_{a}}-{i''''_{b}} {i''_{a}}^2+{i'''_{a}}^2 (-{i''_{b}})+{i'''_{a}} {i'''_{b}} {i''_{a}}\right)+{i''''_{a}} \left({i''''_{a}} {i'''_{b}} {i'_{b}}-{i''''_{a}} {i''_{b}}^2-{i''''_{b}} {i'''_{a}} {i'_{b}}+{i''''_{b}} {i''_{a}} {i''_{b}}+{i'''_{a}} {i'''_{b}} {i''_{b}}+{i'''_{b}}^2 (-{i''_{a}})\right) \\
+		s_{1235} &={i'''''_{a}} ({i'''_{a}} {i''_{b}} {v'_{ab}}-{i'''_{a}} {v''_{ab}} {i'_{b}}-{i'''_{b}} {i''_{a}} {v'_{ab}}+{i'''_{b}} {v''_{ab}} {i'_{a}}+{v'''_{ab}} {i''_{a}} {i'_{b}}-{v'''_{ab}} {i''_{b}} {i'_{a}})+{i''''_{b}} \left({i''''_{a}} {i''_{a}} {v'_{ab}}-{i''''_{a}} {v''_{ab}} {i'_{a}}+{i'''_{a}}^2 (-{v'_{ab}})+{i'''_{a}} {v'''_{ab}} {i'_{a}}+{i'''_{a}} {i''_{a}} {v''_{ab}}-{v'''_{ab}} {i''_{a}}^2\right)\\
+		&+{v''''_{ab}} \left(-{i''''_{a}} {i''_{a}} {i'_{b}}+{i''''_{a}} {i''_{b}} {i'_{a}}+{i'''_{a}}^2 {i'_{b}}+{i'''_{b}} \left({i''_{a}}^2-{i'''_{a}} {i'_{a}}\right)-{i'''_{a}} {i''_{a}} {i''_{b}}\right)-{i''''_{a}} ({i''''_{a}} {i''_{b}} {v'_{ab}}-{i''''_{a}} {v''_{ab}} {i'_{b}}-{i'''_{a}} {i'''_{b}} {v'_{ab}}+{i'''_{a}} {v'''_{ab}} {i'_{b}}+{i'''_{b}} {i''_{a}} {v''_{ab}}-{v'''_{ab}} {i''_{a}} {i''_{b}})\\
+		s_{1245} &={i'''''_{b}} ({i'''_{a}} {i''_{b}} {v'_{ab}}-{i'''_{a}} {v''_{ab}} {i'_{b}}-{i'''_{b}} {i''_{a}} {v'_{ab}}+{i'''_{b}} {v''_{ab}} {i'_{a}}+{v'''_{ab}} {i''_{a}} {i'_{b}}-{v'''_{ab}} {i''_{b}} {i'_{a}})+{i''''_{a}} \left(-{i''''_{b}} {i''_{b}} {v'_{ab}}+{i''''_{b}} {v''_{ab}} {i'_{b}}+{i'''_{b}}^2 {v'_{ab}}+{v'''_{ab}} \left({i''_{b}}^2-{i'''_{b}} {i'_{b}}\right)-{i'''_{b}} {i''_{b}} {v''_{ab}}\right)\\
+		&+{v''''_{ab}} \left(-{i''''_{b}} {i''_{a}} {i'_{b}}+{i''''_{b}} {i''_{b}} {i'_{a}}+{i'''_{a}} {i'''_{b}} {i'_{b}}-{i'''_{a}} {i''_{b}}^2+{i'''_{b}}^2 (-{i'_{a}})+{i'''_{b}} {i''_{a}} {i''_{b}}\right)+{i''''_{b}} ({i''''_{b}} {i''_{a}} {v'_{ab}}-{i''''_{b}} {v''_{ab}} {i'_{a}}-{i'''_{a}} {i'''_{b}} {v'_{ab}}+{i'''_{a}} {i''_{b}} {v''_{ab}}+{i'''_{b}} {v'''_{ab}} {i'_{a}}-{v'''_{ab}} {i''_{a}} {i''_{b}}) \\
+		s_{1246} &={i'''''_{b}} ({i'''_{a}} {i''_{b}} {v'_{bc}}-{i'''_{a}} {v''_{bc}} {i'_{b}}-{i'''_{b}} {i''_{a}} {v'_{bc}}+{i'''_{b}} {v''_{bc}} {i'_{a}}+{v'''_{bc}} {i''_{a}} {i'_{b}}-{v'''_{bc}} {i''_{b}} {i'_{a}})+{i''''_{a}} \left(-{i''''_{b}} {i''_{b}} {v'_{bc}}+{i''''_{b}} {v''_{bc}} {i'_{b}}+{i'''_{b}}^2 {v'_{bc}}+{v'''_{bc}} \left({i''_{b}}^2-{i'''_{b}} {i'_{b}}\right)-{i'''_{b}} {i''_{b}} {v''_{bc}}\right)\\
+		&+{v''''_{bc}} \left(-{i''''_{b}} {i''_{a}} {i'_{b}}+{i''''_{b}} {i''_{b}} {i'_{a}}+{i'''_{a}} {i'''_{b}} {i'_{b}}-{i'''_{a}} {i''_{b}}^2+{i'''_{b}}^2 (-{i'_{a}})+{i'''_{b}} {i''_{a}} {i''_{b}}\right)+{i''''_{b}} ({i''''_{b}} {i''_{a}} {v'_{bc}}-{i''''_{b}} {v''_{bc}} {i'_{a}}-{i'''_{a}} {i'''_{b}} {v'_{bc}}+{i'''_{a}} {i''_{b}} {v''_{bc}}+{i'''_{b}} {v'''_{bc}} {i'_{a}}-{v'''_{bc}} {i''_{a}} {i''_{b}}) \\
+		s_{1345} &={i'''''_{a}} ({i''''_{b}} {i''_{a}} {v'_{ab}}-{i''''_{b}} {v''_{ab}} {i'_{a}}-{i'''_{a}} {i'''_{b}} {v'_{ab}}+{i'''_{a}} {i''_{b}} {v''_{ab}}+{i'''_{b}} {v'''_{ab}} {i'_{a}}-{v'''_{ab}} {i''_{a}} {i''_{b}})+{i'''''_{b}} \left(-{i''''_{a}} {i''_{a}} {v'_{ab}}+{i''''_{a}} {v''_{ab}} {i'_{a}}+{i'''_{a}}^2 {v'_{ab}}+{v'''_{ab}} \left({i''_{a}}^2-{i'''_{a}} {i'_{a}}\right)-{i'''_{a}} {i''_{a}} {v''_{ab}}\right)\\
+		&+{v''''_{ab}} \left(-{i''''_{a}} {i'''_{b}} {i'_{a}}+{i''''_{a}} {i''_{a}} {i''_{b}}+{i''''_{b}} {i'''_{a}} {i'_{a}}-{i''''_{b}} {i''_{a}}^2+{i'''_{a}}^2 (-{i''_{b}})+{i'''_{a}} {i'''_{b}} {i''_{a}}\right)+{i''''_{a}} ({i''''_{a}} {i'''_{b}} {v'_{ab}}-{i''''_{a}} {i''_{b}} {v''_{ab}}-{i''''_{b}} {i'''_{a}} {v'_{ab}}+{i''''_{b}} {i''_{a}} {v''_{ab}}+{i'''_{a}} {v'''_{ab}} {i''_{b}}-{i'''_{b}} {v'''_{ab}} {i''_{a}}) \\
+		s_{2345} &={i'''''_{a}} \left({i''''_{b}} {i''_{b}} {v'_{ab}}-{i''''_{b}} {v''_{ab}} {i'_{b}}+{i'''_{b}}^2 (-{v'_{ab}})+{i'''_{b}} {v'''_{ab}} {i'_{b}}+{i'''_{b}} {i''_{b}} {v''_{ab}}-{v'''_{ab}} {i''_{b}}^2\right)+{i'''''_{b}} (-{i''''_{a}} {i''_{b}} {v'_{ab}}+{i''''_{a}} {v''_{ab}} {i'_{b}}+{i'''_{a}} {i'''_{b}} {v'_{ab}}-{i'''_{a}} {v'''_{ab}} {i'_{b}}-{i'''_{b}} {i''_{a}} {v''_{ab}}+{v'''_{ab}} {i''_{a}} {i''_{b}})\\
+		&+{v''''_{ab}} \left(-{i'''_{b}} ({i''''_{a}} {i'_{b}}+{i'''_{a}} {i''_{b}})+{i''''_{a}} {i''_{b}}^2+{i''''_{b}} {i'''_{a}} {i'_{b}}-{i''''_{b}} {i''_{a}} {i''_{b}}+{i'''_{b}}^2 {i''_{a}}\right)+{i''''_{b}} ({i''''_{a}} {i'''_{b}} {v'_{ab}}-{i''''_{a}} {i''_{b}} {v''_{ab}}-{i''''_{b}} {i'''_{a}} {v'_{ab}}+{i''''_{b}} {i''_{a}} {v''_{ab}}+{i'''_{a}} {v'''_{ab}} {i''_{b}}-{i'''_{b}} {v'''_{ab}} {i''_{a}})\\
+		s_{2346} &={i'''''_{a}} \left({i''''_{b}} {i''_{b}} {v'_{bc}}-{i''''_{b}} {v''_{bc}} {i'_{b}}+{i'''_{b}}^2 (-{v'_{bc}})+{i'''_{b}} {v'''_{bc}} {i'_{b}}+{i'''_{b}} {i''_{b}} {v''_{bc}}-{v'''_{bc}} {i''_{b}}^2\right)+{i'''''_{b}} (-{i''''_{a}} {i''_{b}} {v'_{bc}}+{i''''_{a}} {v''_{bc}} {i'_{b}}+{i'''_{a}} {i'''_{b}} {v'_{bc}}-{i'''_{a}} {v'''_{bc}} {i'_{b}}-{i'''_{b}} {i''_{a}} {v''_{bc}}+{v'''_{bc}} {i''_{a}} {i''_{b}})\\
+		&+{v''''_{bc}} \left(-{i'''_{b}} ({i''''_{a}} {i'_{b}}+{i'''_{a}} {i''_{b}})+{i''''_{a}} {i''_{b}}^2+{i''''_{b}} {i'''_{a}} {i'_{b}}-{i''''_{b}} {i''_{a}} {i''_{b}}+{i'''_{b}}^2 {i''_{a}}\right)+{i''''_{b}} ({i''''_{a}} {i'''_{b}} {v'_{bc}}-{i''''_{a}} {i''_{b}} {v''_{bc}}-{i''''_{b}} {i'''_{a}} {v'_{bc}}+{i''''_{b}} {i''_{a}} {v''_{bc}}+{i'''_{a}} {v'''_{bc}} {i''_{b}}-{i'''_{b}} {v'''_{bc}} {i''_{a}})
+	\end{aligned}
+	$}
+	\end{equation*}
+	\caption{Expanded wye-series symbolic coefficients used in the analytical \newblock{geometric} quotients.}
+	\label{fig:supp_wye_symbolic_coefficients}
+\end{figure*}

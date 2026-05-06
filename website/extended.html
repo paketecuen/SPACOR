@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Geometric Time-Domain Three-Phase Identification: Online Material</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #5e6a7d;
+      --line: #d9dee8;
+      --soft: #f6f8fb;
+      --accent: #0b5cad;
+      --accent-2: #7a3e9d;
+    }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: white;
+      line-height: 1.55;
+    }
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+    }
+    header {
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 28px;
+      padding-bottom: 24px;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      font-size: 15px;
+    }
+    h1 {
+      font-size: 34px;
+      line-height: 1.16;
+      margin: 0 0 12px;
+      letter-spacing: 0;
+    }
+    h2 {
+      font-size: 24px;
+      margin: 36px 0 12px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 6px;
+    }
+    h3 {
+      font-size: 19px;
+      margin: 26px 0 8px;
+    }
+    p, li {
+      font-size: 16px;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .lead {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 900px;
+    }
+    .notice {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--accent);
+      padding: 14px 16px;
+      margin: 18px 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin: 18px 0;
+    }
+    .card {
+      border: 1px solid var(--line);
+      padding: 14px 16px;
+      background: #fff;
+      border-radius: 6px;
+    }
+    .card h3 {
+      margin-top: 0;
+    }
+    figure {
+      margin: 24px 0;
+      border: 1px solid var(--line);
+      padding: 12px;
+      background: #fff;
+    }
+    figure img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+    figcaption {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 16px 0;
+      font-size: 15px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: var(--soft);
+    }
+    code, pre {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+    pre {
+      overflow-x: auto;
+      padding: 12px;
+      background: #111827;
+      color: #edf2f7;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+    details {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin: 14px 0;
+      background: #fff;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: 650;
+      color: var(--accent-2);
+    }
+  </style>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<main>
+  <nav aria-label="Site navigation">
+    <a href="index.html">SPACOR home</a>
+    <a href="#derivations">Derivations</a>
+    <a href="#implementation">Windowed implementation</a>
+    <a href="#energy">Energy criterion</a>
+    <a href="#figures">Extended figures</a>
+    <a href="https://github.com/paketecuen/SPACOR">GitHub repository</a>
+  </nav>
+  <header>
+    <h1>Geometric Time-Domain Identification of Three-Phase Load Equivalents</h1>
+    <p class="lead">
+      Online derivations, symbolic coefficients, reproducibility material, and
+      extended figures for the TPWRD manuscript. This page is intended to be
+      uploaded under <code>https://spacor.ual.es/</code>.
+    </p>
+  </header>
+
+  <section>
+    <h2>Purpose</h2>
+    <p>
+      The printed paper keeps the main argument within the transaction page
+      budget. This online material contains the derivations and additional
+      numerical evidence that are useful for auditability, reproduction, and
+      reviewer response: three-wire delta-parallel and wye-series geometric
+      derivations, expanded \(s_I\) coefficients, singularity analysis,
+      virtual-neutral interpretation, windowed matrix implementation,
+      energy-admissibility diagnostics, and extra MATLAB figures.
+    </p>
+    <div class="notice">
+      <strong>Code release.</strong> The MATLAB reproduction scripts and
+      synthetic campaign generators are available in the public repository:
+      <a id="github-repository" href="https://github.com/paketecuen/SPACOR">GitHub MATLAB repository</a>.
+    </div>
+  </section>
+
+  <section>
+    <h2>Navigation</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Symbolic Coefficients</h3>
+        <p>
+          Expanded expressions for the delta-parallel and wye-series
+          \(s_I\) coefficients are provided as source and PDF.
+        </p>
+        <p>
+          <a href="assets/docs/Paper1_SymbolicCoefficients.pdf">Rendered PDF</a><br>
+          <a href="assets/docs/Paper1_SymbolicCoefficients_body.tex">LaTeX source</a>
+        </p>
+      </div>
+      <div class="card">
+        <h3>Figures</h3>
+        <p>
+          Additional campaign summaries, diagnostic maps, and human-readable
+          waveform/parameter views are included below.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Reproduction</h3>
+        <p>
+          The final public release will include MATLAB scripts, campaign
+          metadata, generated CSV files, and figure-generation routines.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 id="derivations">Three-Wire Geometric Derivations</h2>
+
+    <h3>Delta Parallel Load Equivalent</h3>
+    <p>
+      For a three-wire delta load, the branch voltages are the measured
+      line-to-line voltages. A parallel \(G\Gamma C\) branch model is
+    </p>
+    \[
+      i_{xy}=G_{xy}v_{xy}+\Gamma_{xy}\breve v_{xy}+C_{xy}\dot v_{xy},
+      \qquad xy\in\{ab,bc,ca\},
+    \]
+    <p>
+      with \(\Gamma=1/L\) and \(\breve v\) the time primitive. The measured
+      terminal currents satisfy
+    </p>
+    \[
+      i_a=i_{ab}-i_{ca},\qquad
+      i_b=i_{bc}-i_{ab},\qquad
+      i_c=i_{ca}-i_{bc}.
+    \]
+    <p>
+      For the analytical \(G\Gamma\) reference, choose
+      \(v_{ab}\), \(v_{bc}\), \(i_a\), and \(i_b\) as independent measured
+      coordinates and define the six-dimensional spacor
+    </p>
+    \[
+      \mathbf y =
+      v_{ab}\mathbf e_1+v_{bc}\mathbf e_2+\breve v_{ab}\mathbf e_3+
+      \breve v_{bc}\mathbf e_4+i_a\mathbf e_5+i_b\mathbf e_6.
+    \]
+    <p>
+      Since \(v_{ca}=-(v_{ab}+v_{bc})\), KCL gives
+    </p>
+    \[
+    \begin{aligned}
+      i_a&=(G_{ab}+G_{ca})v_{ab}+G_{ca}v_{bc}
+      +(\Gamma_{ab}+\Gamma_{ca})\breve v_{ab}
+      +\Gamma_{ca}\breve v_{bc},\\
+      i_b&=-G_{ab}v_{ab}+G_{bc}v_{bc}
+      -\Gamma_{ab}\breve v_{ab}+\Gamma_{bc}\breve v_{bc}.
+    \end{aligned}
+    \]
+    <p>
+      The trajectory lies in a four-dimensional subspace of the six-dimensional
+      Euclidean measurement space. Let
+      \(\mathbf K=\mathbf a\wedge\mathbf b\wedge\mathbf c\wedge\mathbf d\)
+      be the model hypervolume and let
+      \(\mathbf K_{\mathrm{osc}}\) be the osculating hypervolume computed from
+      trajectory derivatives. If
+      \(\mathbf K_{\mathrm{osc}}=\sum_I s_I\mathbf e_I\), the delta parallel
+      parameters are obtained from
+    </p>
+    \[
+    \begin{aligned}
+      G_{ab}&=\frac{s_{2346}}{s_{1234}},
+      & G_{bc}&=\frac{s_{1346}}{s_{1234}},
+      & G_{ca}&=\frac{s_{1345}}{s_{1234}},\\
+      \Gamma_{ab}&=\frac{s_{1246}}{s_{1234}},
+      & \Gamma_{bc}&=\frac{s_{1236}}{s_{1234}},
+      & \Gamma_{ca}&=\frac{s_{1235}}{s_{1234}} .
+    \end{aligned}
+    \]
+
+    <h3>Wye Series Load Equivalent</h3>
+    <p>
+      For a three-wire wye load without measured neutral, the directly
+      resolvable family is the series form:
+    </p>
+    \[
+      v_{xn}=R_x i_x+L_x\dot i_x+S_x\breve i_x,\qquad x\in\{a,b,c\}.
+    \]
+    <p>
+      The neutral voltage is eliminated with line-to-line voltage equations.
+      For the \(RL\) analytical reference:
+    </p>
+    \[
+    \begin{aligned}
+      v_{ab} &= R_a i_a+L_a\dot i_a-R_b i_b-L_b\dot i_b,\\
+      v_{bc} &= R_b i_b+L_b\dot i_b
+      +R_c(i_a+i_b)+L_c(\dot i_a+\dot i_b).
+    \end{aligned}
+    \]
+    <p>
+      The corresponding spacor is
+    </p>
+    \[
+      \mathbf z =
+      i_a\mathbf e_1+i_b\mathbf e_2+\dot i_a\mathbf e_3+
+      \dot i_b\mathbf e_4+v_{ab}\mathbf e_5+v_{bc}\mathbf e_6 .
+    \]
+    <p>
+      Comparing the model hypervolume with the osculating hypervolume gives
+    </p>
+    \[
+    \begin{aligned}
+      R_a&=\frac{s_{2345}}{s_{1234}},
+      & R_b&=\frac{s_{1345}}{s_{1234}},
+      & R_c&=\frac{s_{2346}}{s_{1234}},\\
+      L_a&=-\frac{s_{1245}}{s_{1234}},
+      & L_b&=\frac{s_{1235}}{s_{1234}},
+      & L_c&=\frac{s_{1246}}{s_{1234}} .
+    \end{aligned}
+    \]
+
+    <h3>Structural Singularities</h3>
+    <p>
+      A parallel wye family is structurally singular in a three-wire measurement
+      because the required phase-to-neutral voltages are not unique. Adding an
+      arbitrary common-mode function \(u(t)\) to all phase potentials preserves
+      the measured line-to-line voltages but changes the branch voltages of a
+      parallel wye model.
+    </p>
+    <p>
+      A series delta family is structurally singular because the internal branch
+      currents are not uniquely observable. The transformation
+      \((i_{ab},i_{bc},i_{ca})\mapsto(i_{ab}+h,i_{bc}+h,i_{ca}+h)\) preserves
+      the measured terminal currents for any circulating component \(h(t)\),
+      while a series branch law depends on the internal branch current itself.
+    </p>
+
+    <h3>Virtual-Neutral Interpretation</h3>
+    <p>
+      A virtual-neutral reference can be used when a line-to-line load is better
+      interpreted through a wye series representation. The virtual node is not a
+      measured conductor; it is a reference that allows branch sums in the wye
+      representation to recover the original line-to-line values. This is the
+      interpretation used by the virtual-neutral analytical example in the
+      paper.
+    </p>
+  </section>
+
+  <section>
+    <h2 id="implementation">Windowed Matrix Implementation</h2>
+    <p>
+      The analytical quotients above document the geometric origin of the
+      method. The sampled implementation evaluates the same KCL/KVL content over
+      finite windows:
+    </p>
+    \[
+      \mathbf y_w=\Phi_w\theta+\epsilon_w .
+    \]
+    <p>
+      Columns and outputs are scaled before the least-squares solve so that the
+      reported condition number reflects information content rather than the
+      arbitrary units of volts, amperes, henries, or farads. Derivative and
+      primitive coordinates are obtained by window-local FIR differentiation,
+      polynomial filtering, regularized finite differences, or harmonic
+      projection followed by analytical differentiation.
+    </p>
+  </section>
+
+  <section>
+    <h2 id="energy">Energy-Admissibility Criterion</h2>
+    <p>
+      A numerically fitted equivalent is accepted only if it closes the
+      element-level energy balance over the same observation window:
+    </p>
+    \[
+      \rho_E =
+      \frac{
+      \left\|p_{\mathrm{PCC}}(t)-p_{\mathrm d}(t)-dW(t)/dt\right\|_2
+      }{
+      \left\|p_{\mathrm{PCC}}(t)\right\|_2+\varepsilon_E
+      }.
+    \]
+    <p>
+      Small \(\rho_E\) means that terminal power can be accounted for as Joule
+      dissipation plus the time derivative of stored electromagnetic energy in
+      the identified elements. Large \(\rho_E\) rejects a candidate even if a
+      least-squares solution exists.
+    </p>
+  </section>
+
+  <section>
+    <h2>Identifiability Audit</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Case</th>
+          <th>Rank</th>
+          <th>\(s_{12}\) RMS</th>
+          <th>Normalized \(s_{1234}\) RMS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Balanced fundamental</td><td>2</td><td>\(3.92\times10^6\)</td><td>\(5.28\times10^{-33}\)</td></tr>
+        <tr><td>Unbalanced fundamental</td><td>2</td><td>\(2.93\times10^6\)</td><td>\(6.96\times10^{-33}\)</td></tr>
+        <tr><td>Tiny fifth harmonic</td><td>4</td><td>\(3.92\times10^6\)</td><td>\(1.35\times10^{-4}\)</td></tr>
+        <tr><td>Akagi-like harmonics</td><td>4</td><td>\(8.77\times10^6\)</td><td>\(2.66\times10^{-1}\)</td></tr>
+        <tr><td>Rich delta-like</td><td>4</td><td>\(4.67\times10^7\)</td><td>\(7.72\times10^{-3}\)</td></tr>
+      </tbody>
+    </table>
+    <p>
+      Pure fundamental excitation is not screened out because it lacks
+      "harmonics" as a frequency-domain label. It is screened out for
+      higher-order models because its time-domain trajectory has insufficient
+      geometric rank.
+    </p>
+  </section>
+
+  <section>
+    <h2 id="figures">Extended MATLAB Figures</h2>
+
+    <figure>
+      <img src="assets/figures/fig_supp_case_recovery_9cases.png" alt="Nine-case element recovery">
+      <figcaption>Nine representative three-wire cases. Each panel reports recovered physical parameters normalized by known values.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="assets/figures/fig_supp_case_error_and_coverage.png" alt="Nine-case error and coverage">
+      <figcaption>Element-wise parameter errors, selected-window coverage, and median conditioning for the nine-case campaign.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="assets/figures/fig_supp_case_diagnostic_summary.png" alt="Diagnostic summary">
+      <figcaption>Summary diagnostics: median condition number, terminal power residual, and energy residual.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="assets/figures/fig_supp_window_diagnostics_9cases.png" alt="Window diagnostics">
+      <figcaption>Window-by-window diagnostics across the observation horizon.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="assets/figures/fig_supp_degradation_heatmaps.png" alt="Degradation heat maps">
+      <figcaption>Measurement-chain degradation heat maps for the three-wire delta parallel RLC stress test.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="assets/figures/fig_supp_degradation_parameter_cloud.png" alt="Degradation parameter cloud">
+      <figcaption>Parameter clouds under measurement-chain degradations.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="assets/figures/fig_supp_human_D_GLC_noise_4x1.png" alt="Delta RLC noisy human-readable view">
+      <figcaption>Four-panel human-readable view for the noisy delta parallel RLC case.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="assets/figures/fig_supp_human_Y_RLC_noise_4x1.png" alt="Wye RLC noisy human-readable view">
+      <figcaption>Four-panel human-readable view for the noisy wye series RLC case.</figcaption>
+    </figure>
+  </section>
+</main>
+</body>
+</html>

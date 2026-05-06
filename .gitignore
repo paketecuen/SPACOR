@@ -32,6 +32,10 @@ data_registry/
 *.pdf
 !docs/**/*.png
 !docs/**/*.pdf
+!website/**/*.png
+!website/**/*.jpg
+!website/**/*.jpeg
+!website/**/*.pdf
 
 # Python/cache artifacts occasionally used by figure tooling
 __pycache__/

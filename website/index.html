@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPACOR | Geometric Time-Domain Load Identification</title>
+  <meta name="description" content="Public reproducibility site for SPACOR: geometric time-domain identification of electrical load equivalents from terminal measurements.">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="index.html">SPACOR</a>
+      <div class="links">
+        <a href="#method">Method</a>
+        <a href="#three-phase">Three-phase</a>
+        <a href="#reproducibility">Reproducibility</a>
+        <a href="extended.html">Extended material</a>
+        <a href="https://github.com/paketecuen/SPACOR">GitHub</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p class="eyebrow">Geometry of electrical measurements</p>
+      <h1>Time-domain load-equivalent identification from terminal waveforms.</h1>
+      <p class="lead">
+        SPACOR studies voltage and current records as trajectories in Euclidean
+        spaces. The goal is to recover passive load equivalents directly from
+        measured time-domain geometry, with explicit tests for identifiability,
+        passivity, Kirchhoff consistency, and energy admissibility.
+      </p>
+      <div class="actions">
+        <a class="button" href="https://github.com/paketecuen/SPACOR">Open MATLAB code</a>
+        <a class="button secondary" href="extended.html">Browse extended figures</a>
+      </div>
+    </section>
+
+    <section id="method" class="section">
+      <h2>Method</h2>
+      <p>
+        The original 2021 work introduced a single-phase geometric construction
+        for identifying physical equivalent parameters from terminal voltage and
+        current. The current public release keeps that historical material
+        separate and adds a sampled-data implementation: finite observation
+        windows, matrix estimators, harmonic projection for derivatives and
+        primitives, rank and conditioning diagnostics, and degradation campaigns.
+      </p>
+      <div class="grid">
+        <article class="panel">
+          <h3>Geometric formulation</h3>
+          <p>
+            Signals are interpreted as trajectories. Candidate equivalents are
+            accepted only when the trajectory carries enough independent
+            information for the model family.
+          </p>
+        </article>
+        <article class="panel">
+          <h3>Windowed implementation</h3>
+          <p>
+            The continuous-time formulas are implemented through finite windows,
+            normalized regression matrices, harmonic derivatives, and robust
+            residual tests.
+          </p>
+        </article>
+        <article class="panel">
+          <h3>Energy admissibility</h3>
+          <p>
+            A numerical fit is not enough. The recovered elements must close the
+            terminal energy balance implied by resistors, inductors, and
+            capacitors.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="three-phase" class="section">
+      <h2>Three-phase identification</h2>
+      <p>
+        The active three-phase work focuses on three- and four-wire load
+        equivalents. The most demanding case is the three-wire system, where the
+        neutral is not measured and the directly identifiable families must be
+        selected with care. Delta parallel and wye series equivalents are treated
+        as the central physically interpretable families.
+      </p>
+      <figure class="figure-block">
+        <img src="assets/figures/fig_paper1_delta_glc_physical_parameters_4x1.png" alt="Four stacked panels showing voltage, current, recovered parameters, and diagnostics for a delta RLC three-wire case.">
+        <figcaption>
+          Representative three-wire delta parallel RLC identification. The
+          stacked layout shows measured waveforms and recovered physical
+          parameters over a short observation interval.
+        </figcaption>
+      </figure>
+    </section>
+
+    <section id="figures" class="section">
+      <h2>Representative results</h2>
+      <p>
+        The site collects the figures that do not fit comfortably in the paper:
+        parameter recovery, degradation studies, window diagnostics, and human
+        readable waveform-plus-parameter plots. These figures are generated from
+        synthetic reproducibility campaigns; no private measurement data are
+        included.
+      </p>
+      <div class="figure-grid">
+        <figure class="figure-block">
+          <img src="assets/figures/fig_paper1_degradation_error_boxes.png" alt="Box plot of parameter error under measurement degradations.">
+          <figcaption>Parameter-error distribution under measurement degradations.</figcaption>
+        </figure>
+        <figure class="figure-block">
+          <img src="assets/figures/fig_paper1_nine_case_summary.png" alt="Summary of nine synthetic identification cases.">
+          <figcaption>Nine-case overview across topologies, imbalance, and noise.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="reproducibility" class="section">
+      <h2>Reproducibility</h2>
+      <p>
+        The public MATLAB repository contains synthetic fixtures, campaign
+        scripts, regression tests, and the current public API. Large generated
+        results and private measurements are intentionally excluded from Git.
+      </p>
+      <pre class="code"><code>git clone https://github.com/paketecuen/SPACOR.git
+cd SPACOR
+
+% In MATLAB
+startup_spacor
+run_public_smoke
+
+% Example campaigns
+spacor.campaigns.run_threewire_quick()
+spacor.campaigns.run_threewire_degradation()</code></pre>
+      <p class="note">
+        The real-data release policy is conservative: no private measurement
+        data are shipped until consent, metadata, licensing, and integrity
+        checks are ready.
+      </p>
+    </section>
+
+    <section id="papers" class="section">
+      <h2>Papers and citation</h2>
+      <p>
+        The theoretical single-phase formulation was published in IEEE
+        Transactions on Power Delivery in 2021. A three-phase identification
+        manuscript is under preparation and uses this website as public extended
+        material.
+      </p>
+      <pre class="code"><code>@article{montoya2021spacor,
+  author  = {Montoya, Francisco G. and De Leon, Francisco and Arrabal-Campos, Francisco M. and Alcayde, Alfredo},
+  title   = {Determination of Instantaneous Powers from a Novel Time-Domain Parameter Identification Method of Non-Linear Single-Phase Circuits},
+  journal = {IEEE Transactions on Power Delivery},
+  year    = {2021},
+  doi     = {10.1109/TPWRD.2021.3133069}
+}</code></pre>
+    </section>
+  </main>
+
+  <footer class="footer">
+    SPACOR public site. Universidad de Almeria. Code released under GPL-3.0.
+  </footer>
+</body>
+</html>
