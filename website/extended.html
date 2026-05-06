@@ -147,6 +147,19 @@
       font-weight: 650;
       color: var(--accent-2);
     }
+    .formula-scroll {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 8px 0;
+    }
+    .formula-scroll mjx-container {
+      min-width: max-content;
+    }
+    .formula-note {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 8px 0 0;
+    }
   </style>
   <script>
     window.MathJax = {
@@ -290,6 +303,54 @@
     \end{aligned}
     \]
 
+    <details>
+      <summary>Expanded delta-parallel \(s_I\) coefficients</summary>
+      <p class="formula-note">
+        These are the explicit blade coefficients of
+        \(\mathbf K_{\mathrm{osc}}=\sum_I s_I\mathbf e_I\) for the analytical
+        three-wire delta-parallel \(G\Gamma\) construction. They are included
+        here for auditability; the numerical implementation uses the equivalent
+        windowed matrix form.
+      </p>
+      <div class="formula-scroll">
+      \[
+      \begin{aligned}
+        s_{1234} &=({v''''_{bc}} {v'''_{ab}}-{v''''_{ab}} {v'''_{bc}}) ({v'_{bc}} {v_{ab}}-{v'_{ab}} {v_{bc}})
+        -\left({v'''_{ab}}^2-{v''''_{ab}} {v''_{ab}}\right) \left({v'_{bc}}^2-{v''_{bc}} {v_{bc}}\right)
+        +({v'''_{ab}} {v'''_{bc}}-{v''''_{ab}} {v''_{bc}}) ({v'_{ab}} {v'_{bc}}-{v''_{bc}} {v_{ab}})\\
+        &+({v'''_{ab}} {v'''_{bc}}-{v''''_{bc}} {v''_{ab}}) ({v'_{ab}} {v'_{bc}}-{v''_{ab}} {v_{bc}})
+        -\left({v'''_{bc}}^2-{v''''_{bc}} {v''_{bc}}\right) \left({v'_{ab}}^2-{v''_{ab}} {v_{ab}}\right)
+        +({v'''_{bc}} {v''_{ab}}-{v'''_{ab}} {v''_{bc}}) ({v''_{bc}} {v'_{ab}}-{v''_{ab}} {v'_{bc}})\\[0.35em]
+        s_{2346}&=({i''''_{b}} {v'''_{bc}}-{v''''_{bc}} {i'''_{b}}) ({v'_{bc}} {v_{ab}}-{v'_{ab}} {v_{bc}})+\left({v'_{bc}}^2-{v''_{bc}} {v_{bc}}\right) ({i'''_{b}} {v'''_{ab}}-{i''''_{b}} {v''_{ab}})
+        +({i'''_{b}} {v'''_{bc}}-{i''''_{b}} {v''_{bc}}) ({v''_{bc}} {v_{ab}}-{v'_{ab}} {v'_{bc}})\\
+        &+({v'''_{ab}} {v'''_{bc}}-{v''''_{bc}} {v''_{ab}}) ({i''_{b}} {v_{bc}}-{i'_{b}} {v'_{bc}})
+        +\left({v'''_{bc}}^2-{v''''_{bc}} {v''_{bc}}\right) ({i'_{b}} {v'_{ab}}-{i''_{b}} {v_{ab}})+({v'''_{bc}} {v''_{ab}}-{v'''_{ab}} {v''_{bc}}) ({i''_{b}} {v'_{bc}}-{v''_{bc}} {i'_{b}})\\[0.35em]
+        s_{1246}&=\left({v'_{bc}}^2-{v''_{bc}} {v_{bc}}\right) ({i''''_{b}} {v'''_{ab}}-{v''''_{ab}} {i'''_{b}})+({v''''_{bc}} {i'''_{b}}-{i''''_{b}} {v'''_{bc}}) ({v'_{ab}} {v'_{bc}}-{v''_{ab}} {v_{bc}})
+        +({i''''_{b}} {v''_{bc}}-{i'''_{b}} {v'''_{bc}}) ({v''_{bc}} {v'_{ab}}-{v''_{ab}} {v'_{bc}})\\
+        &+({v''''_{bc}} {v'''_{ab}}-{v''''_{ab}} {v'''_{bc}}) ({i''_{b}} {v_{bc}}-{i'_{b}} {v'_{bc}})
+        +({v'''_{ab}} {v'''_{bc}}-{v''''_{ab}} {v''_{bc}}) ({v''_{bc}} {i'_{b}}-{i''_{b}} {v'_{bc}})+\left({v'''_{bc}}^2-{v''''_{bc}} {v''_{bc}}\right) ({i''_{b}} {v'_{ab}}-{v''_{ab}} {i'_{b}})\\[0.35em]
+        s_{1346}&=({i''''_{b}} {v'''_{ab}}-{v''''_{ab}} {i'''_{b}}) ({v'_{bc}} {v_{ab}}-{v'_{ab}} {v_{bc}})-({i'''_{b}} {v'''_{ab}}-{i''''_{b}} {v''_{ab}}) ({v''_{ab}} {v_{bc}}-{v'_{ab}} {v'_{bc}})
+        +\left({v'_{ab}}^2-{v''_{ab}} {v_{ab}}\right) ({i''''_{b}} {v''_{bc}}-{i'''_{b}} {v'''_{bc}})\\
+        &+\left({v'''_{ab}}^2-{v''''_{ab}} {v''_{ab}}\right) ({i''_{b}} {v_{bc}}-{i'_{b}} {v'_{bc}})
+        +({v'''_{ab}} {v'''_{bc}}-{v''''_{ab}} {v''_{bc}}) ({i'_{b}} {v'_{ab}}-{i''_{b}} {v_{ab}})+({v'''_{bc}} {v''_{ab}}-{v'''_{ab}} {v''_{bc}}) ({i''_{b}} {v'_{ab}}-{v''_{ab}} {i'_{b}}) \\[0.35em]
+        s_{1236}&=({i''''_{b}} {v'''_{ab}}-{v''''_{ab}} {i'''_{b}}) ({v'_{ab}} {v'_{bc}}-{v''_{bc}} {v_{ab}})+\left({v'_{ab}}^2-{v''_{ab}} {v_{ab}}\right) ({v''''_{bc}} {i'''_{b}}-{i''''_{b}} {v'''_{bc}})
+        +({i'''_{b}} {v'''_{ab}}-{i''''_{b}} {v''_{ab}}) ({v''_{ab}} {v'_{bc}}-{v''_{bc}} {v'_{ab}})\\
+        &+({v''''_{bc}} {v'''_{ab}}-{v''''_{ab}} {v'''_{bc}}) ({i''_{b}} {v_{ab}}-{i'_{b}} {v'_{ab}})
+        +\left({v'''_{ab}}^2-{v''''_{ab}} {v''_{ab}}\right) ({v''_{bc}} {i'_{b}}-{i''_{b}} {v'_{bc}})+({v'''_{ab}} {v'''_{bc}}-{v''''_{bc}} {v''_{ab}}) ({i''_{b}} {v'_{ab}}-{v''_{ab}} {i'_{b}}) \\[0.35em]
+        s_{1345}&=({i''''_{a}} {v'''_{ab}}-{v''''_{ab}} {i'''_{a}}) ({v'_{bc}} {v_{ab}}-{v'_{ab}} {v_{bc}})-({i'''_{a}} {v'''_{ab}}-{i''''_{a}} {v''_{ab}}) ({v''_{ab}} {v_{bc}}-{v'_{ab}} {v'_{bc}})
+        +\left({v'_{ab}}^2-{v''_{ab}} {v_{ab}}\right) ({i''''_{a}} {v''_{bc}}-{i'''_{a}} {v'''_{bc}})\\
+        &+\left({v'''_{ab}}^2-{v''''_{ab}} {v''_{ab}}\right) ({i''_{a}} {v_{bc}}-{i'_{a}} {v'_{bc}})
+        +({v'''_{ab}} {v'''_{bc}}-{v''''_{ab}} {v''_{bc}}) ({i'_{a}} {v'_{ab}}-{i''_{a}} {v_{ab}})+({v'''_{bc}} {v''_{ab}}-{v'''_{ab}} {v''_{bc}}) ({i''_{a}} {v'_{ab}}-{v''_{ab}} {i'_{a}})\\[0.35em]
+        s_{1235}&=({i''''_{a}} {v'''_{ab}}-{v''''_{ab}} {i'''_{a}}) ({v'_{ab}} {v'_{bc}}-{v''_{bc}} {v_{ab}})
+        +\left({v'_{ab}}^2-{v''_{ab}} {v_{ab}}\right) ({v''''_{bc}} {i'''_{a}}-{i''''_{a}} {v'''_{bc}})
+        +({i'''_{a}} {v'''_{ab}}-{i''''_{a}} {v''_{ab}}) ({v''_{ab}} {v'_{bc}}-{v''_{bc}} {v'_{ab}})\\
+        &+({v''''_{bc}} {v'''_{ab}}-{v''''_{ab}} {v'''_{bc}}) ({i''_{a}} {v_{ab}}-{i'_{a}} {v'_{ab}})
+        +\left({v'''_{ab}}^2-{v''''_{ab}} {v''_{ab}}\right) ({v''_{bc}} {i'_{a}}-{i''_{a}} {v'_{bc}})+({v'''_{ab}} {v'''_{bc}}-{v''''_{bc}} {v''_{ab}}) ({i''_{a}} {v'_{ab}}-{v''_{ab}} {i'_{a}})
+      \end{aligned}
+      \]
+      </div>
+    </details>
+
     <h3>Wye Series Load Equivalent</h3>
     <p>
       For a three-wire wye load without measured neutral, the directly
@@ -330,6 +391,35 @@
       & L_c&=\frac{s_{1246}}{s_{1234}} .
     \end{aligned}
     \]
+
+    <details>
+      <summary>Expanded wye-series \(s_I\) coefficients</summary>
+      <p class="formula-note">
+        These coefficients correspond to the analytical three-wire wye-series
+        \(RL\) construction after eliminating the neutral potential with
+        line-to-line voltage equations.
+      </p>
+      <div class="formula-scroll">
+      \[
+      \begin{aligned}
+        s_{1234} &={i'''''_{a}} \left({i''''_{b}} {i''_{a}} {i'_{b}}-{i''''_{b}} {i''_{b}} {i'_{a}}-{i'''_{b}} ({i'''_{a}} {i'_{b}}+{i''_{a}} {i''_{b}})+{i'''_{a}} {i''_{b}}^2+{i'''_{b}}^2 {i'_{a}}\right)+{i'''''_{b}} \left(-{i''''_{a}} {i''_{a}} {i'_{b}}+{i''''_{a}} {i''_{b}} {i'_{a}}+{i'''_{a}}^2 {i'_{b}}+{i'''_{b}} \left({i''_{a}}^2-{i'''_{a}} {i'_{a}}\right)-{i'''_{a}} {i''_{a}} {i''_{b}}\right)\\
+        &+{i''''_{b}} \left(-{i''''_{a}} {i'''_{b}} {i'_{a}}+{i''''_{a}} {i''_{a}} {i''_{b}}+{i''''_{b}} {i'''_{a}} {i'_{a}}-{i''''_{b}} {i''_{a}}^2+{i'''_{a}}^2 (-{i''_{b}})+{i'''_{a}} {i'''_{b}} {i''_{a}}\right)+{i''''_{a}} \left({i''''_{a}} {i'''_{b}} {i'_{b}}-{i''''_{a}} {i''_{b}}^2-{i''''_{b}} {i'''_{a}} {i'_{b}}+{i''''_{b}} {i''_{a}} {i''_{b}}+{i'''_{a}} {i'''_{b}} {i''_{b}}+{i'''_{b}}^2 (-{i''_{a}})\right) \\[0.35em]
+        s_{1235} &={i'''''_{a}} ({i'''_{a}} {i''_{b}} {v'_{ab}}-{i'''_{a}} {v''_{ab}} {i'_{b}}-{i'''_{b}} {i''_{a}} {v'_{ab}}+{i'''_{b}} {v''_{ab}} {i'_{a}}+{v'''_{ab}} {i''_{a}} {i'_{b}}-{v'''_{ab}} {i''_{b}} {i'_{a}})+{i''''_{b}} \left({i''''_{a}} {i''_{a}} {v'_{ab}}-{i''''_{a}} {v''_{ab}} {i'_{a}}+{i'''_{a}}^2 (-{v'_{ab}})+{i'''_{a}} {v'''_{ab}} {i'_{a}}+{i'''_{a}} {i''_{a}} {v''_{ab}}-{v'''_{ab}} {i''_{a}}^2\right)\\
+        &+{v''''_{ab}} \left(-{i''''_{a}} {i''_{a}} {i'_{b}}+{i''''_{a}} {i''_{b}} {i'_{a}}+{i'''_{a}}^2 {i'_{b}}+{i'''_{b}} \left({i''_{a}}^2-{i'''_{a}} {i'_{a}}\right)-{i'''_{a}} {i''_{a}} {i''_{b}}\right)-{i''''_{a}} ({i''''_{a}} {i''_{b}} {v'_{ab}}-{i''''_{a}} {v''_{ab}} {i'_{b}}-{i'''_{a}} {i'''_{b}} {v'_{ab}}+{i'''_{a}} {v'''_{ab}} {i'_{b}}+{i'''_{b}} {i''_{a}} {v''_{ab}}-{v'''_{ab}} {i''_{a}} {i''_{b}})\\[0.35em]
+        s_{1245} &={i'''''_{b}} ({i'''_{a}} {i''_{b}} {v'_{ab}}-{i'''_{a}} {v''_{ab}} {i'_{b}}-{i'''_{b}} {i''_{a}} {v'_{ab}}+{i'''_{b}} {v''_{ab}} {i'_{a}}+{v'''_{ab}} {i''_{a}} {i'_{b}}-{v'''_{ab}} {i''_{b}} {i'_{a}})+{i''''_{a}} \left(-{i''''_{b}} {i''_{b}} {v'_{ab}}+{i''''_{b}} {v''_{ab}} {i'_{b}}+{i'''_{b}}^2 {v'_{ab}}+{v'''_{ab}} \left({i''_{b}}^2-{i'''_{b}} {i'_{b}}\right)-{i'''_{b}} {i''_{b}} {v''_{ab}}\right)\\
+        &+{v''''_{ab}} \left(-{i''''_{b}} {i''_{a}} {i'_{b}}+{i''''_{b}} {i''_{b}} {i'_{a}}+{i'''_{a}} {i'''_{b}} {i'_{b}}-{i'''_{a}} {i''_{b}}^2+{i'''_{b}}^2 (-{i'_{a}})+{i'''_{b}} {i''_{a}} {i''_{b}}\right)+{i''''_{b}} ({i''''_{b}} {i''_{a}} {v'_{ab}}-{i''''_{b}} {v''_{ab}} {i'_{a}}-{i'''_{a}} {i'''_{b}} {v'_{ab}}+{i'''_{a}} {i''_{b}} {v''_{ab}}+{i'''_{b}} {v'''_{ab}} {i'_{a}}-{v'''_{ab}} {i''_{a}} {i''_{b}}) \\[0.35em]
+        s_{1246} &={i'''''_{b}} ({i'''_{a}} {i''_{b}} {v'_{bc}}-{i'''_{a}} {v''_{bc}} {i'_{b}}-{i'''_{b}} {i''_{a}} {v'_{bc}}+{i'''_{b}} {v''_{bc}} {i'_{a}}+{v'''_{bc}} {i''_{a}} {i'_{b}}-{v'''_{bc}} {i''_{b}} {i'_{a}})+{i''''_{a}} \left(-{i''''_{b}} {i''_{b}} {v'_{bc}}+{i''''_{b}} {v''_{bc}} {i'_{b}}+{i'''_{b}}^2 {v'_{bc}}+{v'''_{bc}} \left({i''_{b}}^2-{i'''_{b}} {i'_{b}}\right)-{i'''_{b}} {i''_{b}} {v''_{bc}}\right)\\
+        &+{v''''_{bc}} \left(-{i''''_{b}} {i''_{a}} {i'_{b}}+{i''''_{b}} {i''_{b}} {i'_{a}}+{i'''_{a}} {i'''_{b}} {i'_{b}}-{i'''_{a}} {i''_{b}}^2+{i'''_{b}}^2 (-{i'_{a}})+{i'''_{b}} {i''_{a}} {i''_{b}}\right)+{i''''_{b}} ({i''''_{b}} {i''_{a}} {v'_{bc}}-{i''''_{b}} {v''_{bc}} {i'_{a}}-{i'''_{a}} {i'''_{b}} {v'_{bc}}+{i'''_{a}} {i''_{b}} {v''_{bc}}+{i'''_{b}} {v'''_{bc}} {i'_{a}}-{v'''_{bc}} {i''_{a}} {i''_{b}}) \\[0.35em]
+        s_{1345} &={i'''''_{a}} ({i''''_{b}} {i''_{a}} {v'_{ab}}-{i''''_{b}} {v''_{ab}} {i'_{a}}-{i'''_{a}} {i'''_{b}} {v'_{ab}}+{i'''_{a}} {i''_{b}} {v''_{ab}}+{i'''_{b}} {v'''_{ab}} {i'_{a}}-{v'''_{ab}} {i''_{a}} {i''_{b}})+{i'''''_{b}} \left(-{i''''_{a}} {i''_{a}} {v'_{ab}}+{i''''_{a}} {v''_{ab}} {i'_{a}}+{i'''_{a}}^2 {v'_{ab}}+{v'''_{ab}} \left({i''_{a}}^2-{i'''_{a}} {i'_{a}}\right)-{i'''_{a}} {i''_{a}} {v''_{ab}}\right)\\
+        &+{v''''_{ab}} \left(-{i''''_{a}} {i'''_{b}} {i'_{a}}+{i''''_{a}} {i''_{a}} {i''_{b}}+{i''''_{b}} {i'''_{a}} {i'_{a}}-{i''''_{b}} {i''_{a}}^2+{i'''_{a}}^2 (-{i''_{b}})+{i'''_{a}} {i'''_{b}} {i''_{a}}\right)+{i''''_{a}} ({i''''_{a}} {i'''_{b}} {v'_{ab}}-{i''''_{a}} {i''_{b}} {v''_{ab}}-{i''''_{b}} {i'''_{a}} {v'_{ab}}+{i''''_{b}} {i''_{a}} {v''_{ab}}+{i'''_{a}} {v'''_{ab}} {i''_{b}}-{i'''_{b}} {v'''_{ab}} {i''_{a}}) \\[0.35em]
+        s_{2345} &={i'''''_{a}} \left({i''''_{b}} {i''_{b}} {v'_{ab}}-{i''''_{b}} {v''_{ab}} {i'_{b}}+{i'''_{b}}^2 (-{v'_{ab}})+{i'''_{b}} {v'''_{ab}} {i'_{b}}+{i'''_{b}} {i''_{b}} {v''_{ab}}-{v'''_{ab}} {i''_{b}}^2\right)+{i'''''_{b}} (-{i''''_{a}} {i''_{b}} {v'_{ab}}+{i''''_{a}} {v''_{ab}} {i'_{b}}+{i'''_{a}} {i'''_{b}} {v'_{ab}}-{i'''_{a}} {v'''_{ab}} {i'_{b}}-{i'''_{b}} {i''_{a}} {v''_{ab}}+{v'''_{ab}} {i''_{a}} {i''_{b}})\\
+        &+{v''''_{ab}} \left(-{i'''_{b}} ({i''''_{a}} {i'_{b}}+{i'''_{a}} {i''_{b}})+{i''''_{a}} {i''_{b}}^2+{i''''_{b}} {i'''_{a}} {i'_{b}}-{i''''_{b}} {i''_{a}} {i''_{b}}+{i'''_{b}}^2 {i''_{a}}\right)+{i''''_{b}} ({i''''_{a}} {i'''_{b}} {v'_{ab}}-{i''''_{a}} {i''_{b}} {v''_{ab}}-{i''''_{b}} {i'''_{a}} {v'_{ab}}+{i''''_{b}} {i''_{a}} {v''_{ab}}+{i'''_{a}} {v'''_{ab}} {i''_{b}}-{i'''_{b}} {v'''_{ab}} {i''_{a}})\\[0.35em]
+        s_{2346} &={i'''''_{a}} \left({i''''_{b}} {i''_{b}} {v'_{bc}}-{i''''_{b}} {v''_{bc}} {i'_{b}}+{i'''_{b}}^2 (-{v'_{bc}})+{i'''_{b}} {v'''_{bc}} {i'_{b}}+{i'''_{b}} {i''_{b}} {v''_{bc}}-{v'''_{bc}} {i''_{b}}^2\right)+{i'''''_{b}} (-{i''''_{a}} {i''_{b}} {v'_{bc}}+{i''''_{a}} {v''_{bc}} {i'_{b}}+{i'''_{a}} {i'''_{b}} {v'_{bc}}-{i'''_{a}} {v'''_{bc}} {i'_{b}}-{i'''_{b}} {i''_{a}} {v''_{bc}}+{v'''_{bc}} {i''_{a}} {i''_{b}})\\
+        &+{v''''_{bc}} \left(-{i'''_{b}} ({i''''_{a}} {i'_{b}}+{i'''_{a}} {i''_{b}})+{i''''_{a}} {i''_{b}}^2+{i''''_{b}} {i'''_{a}} {i'_{b}}-{i''''_{b}} {i''_{a}} {i''_{b}}+{i'''_{b}}^2 {i''_{a}}\right)+{i''''_{b}} ({i''''_{a}} {i'''_{b}} {v'_{bc}}-{i''''_{a}} {i''_{b}} {v''_{bc}}-{i''''_{b}} {i'''_{a}} {v'_{bc}}+{i''''_{b}} {i''_{a}} {v''_{bc}}+{i'''_{a}} {v'''_{bc}} {i''_{b}}-{i'''_{b}} {v'''_{bc}} {i''_{a}})
+      \end{aligned}
+      \]
+      </div>
+    </details>
 
     <h3>Structural Singularities</h3>
     <p>
