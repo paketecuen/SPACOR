@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPACOR Extended Tests</title>
+  <meta name="description" content="Extended synthetic tests for SPACOR three-wire time-domain load-equivalent identification.">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="index.html">SPACOR</a>
+      <div class="links">
+        <a href="index.html#method">Method</a>
+        <a href="index.html#three-phase">Three-phase</a>
+        <a href="tests.html">Extended tests</a>
+        <a href="extended.html">Derivations</a>
+        <a href="https://github.com/paketecuen/SPACOR">GitHub</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p class="eyebrow">Synthetic tests beyond the paper</p>
+      <h1>Audit trail for three-wire load-equivalent identification.</h1>
+      <p class="lead">
+        The paper can only show a small number of figures. This page keeps the
+        wider synthetic campaign visible: topology variation, imbalance,
+        insufficient excitation, short windows, noise, quantization, gain
+        mismatch, current delay, and combined delay-plus-noise.
+      </p>
+      <div class="actions">
+        <a class="button" href="#downloads">Download CSV summaries</a>
+        <a class="button secondary" href="extended.html">Open derivations</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>What These Tests Are For</h2>
+      <p>
+        The objective is not to claim that every record identifies every
+        equivalent. The objective is sharper: when the time trajectory is
+        informative, passive, Kirchhoff-consistent, and energetically
+        admissible, the method recovers the selected load-equivalent parameters;
+        when one of those conditions fails, the diagnostics should make the
+        failure visible.
+      </p>
+      <div class="grid">
+        <article class="panel">
+          <h3>Model richness</h3>
+          <p>Delta parallel and wye series cases include balanced, unbalanced, GL/RL, and RLC families.</p>
+        </article>
+        <article class="panel">
+          <h3>Measurement chain</h3>
+          <p>Noise, quantization, gain mismatch, filtering windows, and current delay are treated as stress cases.</p>
+        </article>
+        <article class="panel">
+          <h3>Physical acceptance</h3>
+          <p>Residuals and energy-admissibility checks prevent a numerical fit from being mistaken for a physical equivalent.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Nine-Case Identification Matrix</h2>
+      <p>
+        The base campaign contains nine synthetic three-wire records. Six are
+        direct topology/parameter tests and three are stress tests. The
+        fundamental-only case is deliberately included: it demonstrates that the
+        method reduces to the simpler identifiable family instead of inventing a
+        full RLC equivalent from a rank-deficient trajectory.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Case</th>
+              <th>Truth</th>
+              <th>Selected equivalent</th>
+              <th>Coverage</th>
+              <th>Median condition</th>
+              <th>Energy residual</th>
+              <th>Mean parameter error</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>D-GL balanced</td><td>Delta parallel GL</td><td>Delta balanced GL</td><td>100%</td><td>1.02</td><td>1.17e-6</td><td>0</td></tr>
+            <tr><td>D-GL unbalanced</td><td>Delta parallel GL</td><td>Delta full unbalanced GL</td><td>100%</td><td>24.07</td><td>2.22e-6</td><td>6.48e-16</td></tr>
+            <tr><td>D-GLC + noise</td><td>Delta parallel GLC</td><td>Delta full unbalanced GLC</td><td>100%</td><td>31.86</td><td>9.17e-6</td><td>8.03e-5</td></tr>
+            <tr><td>Y-RL balanced</td><td>Wye series RL</td><td>Wye balanced RL</td><td>100%</td><td>1.02</td><td>4.06e-5</td><td>1.22e-15</td></tr>
+            <tr><td>Y-RLC unbalanced</td><td>Wye series RLC</td><td>Wye full unbalanced RLC</td><td>100%</td><td>32.48</td><td>3.42e-5</td><td>6.77e-15</td></tr>
+            <tr><td>Y-RLC + noise</td><td>Wye series RLC</td><td>Wye full unbalanced RLC</td><td>100%</td><td>32.48</td><td>3.79e-5</td><td>3.41e-4</td></tr>
+            <tr><td>D-GLC extreme</td><td>Delta parallel GLC</td><td>Delta full unbalanced GLC</td><td>100%</td><td>31.86</td><td>4.85e-6</td><td>1.25e-14</td></tr>
+            <tr><td>D-GLC fundamental</td><td>Delta parallel GLC</td><td>Reduced delta GL pair</td><td>100%</td><td>1.45</td><td>5.69e-7</td><td><span class="tag warn">not full RLC</span></td></tr>
+            <tr><td>D-GLC + 60 dB noise</td><td>Delta parallel GLC</td><td>Delta full unbalanced GLC</td><td>100%</td><td>31.86</td><td>2.57e-5</td><td>5.03e-4</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="figure-grid">
+        <figure class="figure-block wide">
+          <img src="assets/figures/fig_supp_case_recovery_9cases.png" alt="Parameter recovery across nine synthetic three-wire cases.">
+          <figcaption>Parameter recovery across nine representative synthetic three-wire cases.</figcaption>
+        </figure>
+        <figure class="figure-block">
+          <img src="assets/figures/fig_supp_case_error_and_coverage.png" alt="Case-level error and selected-window coverage.">
+          <figcaption>Case-level parameter error and selected-window coverage.</figcaption>
+        </figure>
+        <figure class="figure-block">
+          <img src="assets/figures/fig_supp_case_diagnostic_summary.png" alt="Diagnostic summary across nine cases.">
+          <figcaption>Conditioning, terminal-power residual, and energy-residual diagnostics.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Measurement-Chain Stress Tests</h2>
+      <p>
+        A delta parallel RLC stress case was evaluated under several
+        measurement-chain degradations and four window lengths. Short
+        quarter-cycle windows are intentionally severe and often fail under
+        noise or quantization. Longer windows recover the parameters under
+        noise, quantization, and gain mismatch, while coherent current delay is
+        correctly reported as physically inconsistent.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Degradation</th>
+              <th>Window lengths</th>
+              <th>Observed behavior</th>
+              <th>Interpretation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Clean</td><td>0.25, 0.5, 1, 2 cycles</td><td><span class="tag">pass</span> all windows</td><td>Baseline numerical recovery.</td></tr>
+            <tr><td>60 dB noise</td><td>0.25 cycles fails; 0.5-2 cycles pass</td><td>Longer windows keep max relative error below 7.5e-4.</td><td>Noise is handled when the window contains enough information.</td></tr>
+            <tr><td>40 dB noise</td><td>0.25 cycles fails; 0.5-2 cycles pass</td><td>Longer windows keep max relative error near 1e-2.</td><td>Strong noise degrades accuracy but remains usable with sufficient window length.</td></tr>
+            <tr><td>Gain mismatch</td><td>0.25, 0.5, 1, 2 cycles</td><td><span class="tag">pass</span> all windows; max error about 1.4e-2.</td><td>Small sensor gain errors appear as bounded parameter bias.</td></tr>
+            <tr><td>12-bit quantization</td><td>0.25 cycles fails; 0.5-2 cycles pass</td><td>Longer windows keep max relative error below 1.9e-3.</td><td>Quantization is manageable when enough samples are available.</td></tr>
+            <tr><td>50 microsecond current delay</td><td>0.25, 0.5, 1, 2 cycles</td><td><span class="tag stop">reject</span> all windows.</td><td>The method exposes synchronization error rather than hiding it in a false equivalent.</td></tr>
+            <tr><td>Delay plus 60 dB noise</td><td>0.25, 0.5, 1, 2 cycles</td><td><span class="tag stop">reject</span> all windows.</td><td>Coherent time alignment dominates the error budget.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="figure-grid">
+        <figure class="figure-block">
+          <img src="assets/figures/fig_supp_degradation_heatmaps.png" alt="Heatmaps for measurement-chain degradation stress tests.">
+          <figcaption>Heatmaps for degradation and window-length combinations.</figcaption>
+        </figure>
+        <figure class="figure-block">
+          <img src="assets/figures/fig_supp_degradation_parameter_cloud.png" alt="Parameter cloud under measurement degradations.">
+          <figcaption>Parameter cloud under measurement-chain degradations.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Short Human-Readable Records</h2>
+      <p>
+        These plots show four aligned panels over short records: terminal
+        voltages, terminal currents, recovered physical parameters, and
+        diagnostics. They are deliberately not compressed into the paper because
+        their value is visual inspection.
+      </p>
+      <div class="figure-grid">
+        <figure class="figure-block">
+          <img src="assets/figures/fig_supp_human_D_GLC_noise_4x1.png" alt="Noisy delta parallel RLC test.">
+          <figcaption>Noisy delta parallel RLC test.</figcaption>
+        </figure>
+        <figure class="figure-block">
+          <img src="assets/figures/fig_supp_human_Y_RLC_noise_4x1.png" alt="Noisy wye series RLC test.">
+          <figcaption>Noisy wye series RLC test.</figcaption>
+        </figure>
+        <figure class="figure-block wide">
+          <img src="assets/figures/fig_supp_human_D_GL_switch_4x1.png" alt="Switched delta GL test.">
+          <figcaption>Switched delta GL test with thyristor-like behavior.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Window-Level Audit</h2>
+      <p>
+        The full window-diagnostic file contains 2637 synthetic windows. Each
+        row records the selected model, rank, condition number, power residual,
+        energy residual, passivity, and adequacy flag. This table is intended
+        for reviewers and readers who want to audit the behavior window by
+        window rather than only through a final figure.
+      </p>
+      <figure class="figure-block">
+        <img src="assets/figures/fig_supp_window_diagnostics_9cases.png" alt="Window-level diagnostics across nine cases.">
+        <figcaption>Window-level diagnostics across the nine-case campaign.</figcaption>
+      </figure>
+    </section>
+
+    <section id="downloads" class="section">
+      <h2>Download Synthetic Summaries</h2>
+      <p>
+        These files are generated summaries from synthetic campaigns. They are
+        safe to publish because they do not contain private measurements.
+      </p>
+      <div class="downloads">
+        <a class="download" href="assets/data/case_summary.csv"><strong>case_summary.csv</strong><br>Nine-case model-selection and residual summary.</a>
+        <a class="download" href="assets/data/parameter_recovery.csv"><strong>parameter_recovery.csv</strong><br>Truth, median estimates, quartiles, and normalized recovery.</a>
+        <a class="download" href="assets/data/window_diagnostics.csv"><strong>window_diagnostics.csv</strong><br>Window-by-window rank, condition, residual, passive, and adequate flags.</a>
+        <a class="download" href="assets/data/degradation_stress_delta_parallel_rlc_summary.csv"><strong>degradation_stress_delta_parallel_rlc_summary.csv</strong><br>Stress-test summary by degradation and window length.</a>
+        <a class="download" href="assets/data/degradation_stress_delta_parallel_rlc_parameters.csv"><strong>degradation_stress_delta_parallel_rlc_parameters.csv</strong><br>Parameter estimates and errors for degradation stress tests.</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    SPACOR extended synthetic tests. Universidad de Almeria.
+  </footer>
+</body>
+</html>

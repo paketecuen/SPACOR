@@ -1,0 +1,10 @@
+CaseIndex,CaseId,ShortTitle,Group,TruthModel,ExpectedCandidate,SelectedModel,SelectedTopology,SelectedTerms,SelectedCoverage,AdequateCoverage,DominantFraction,MedianCondition,MedianPowerResidual,MedianEnergyResidual,MeanAbsRelativeError,ValidParameterCount
+1,D-GL-bal,Delta GL balanced,delta,delta_parallel_gl,delta_gl_balanced,delta_gl_balanced,delta_parallel,gl,1,1,1,1.02161462039077,6.42434601513647e-16,1.17329323059556e-06,0,6
+2,D-GL-unb,Delta GL unbalanced,delta,delta_parallel_gl,delta_gl_full_unbalanced,delta_gl_full_unbalanced,delta_parallel,gl,1,1,1,24.0736908620197,5.86125315381647e-16,2.2233165033639e-06,6.47630097698008e-16,6
+3,D-GLC-noise,Delta GLC + noise,delta,delta_parallel_glc,delta_glc_full_unbalanced,delta_glc_full_unbalanced,delta_parallel,glc,1,1,1,31.8625124756374,0.000425545119604417,9.16695021165731e-06,8.02918072967026e-05,9
+4,Y-RL-bal,Wye RL balanced,wye,wye_series_rl,wye_rl_balanced,wye_rl_balanced,wye_series,rl,1,1,1,1.01610491616954,1.57646858885e-14,4.06492551878527e-05,1.22124532708767e-15,6
+5,Y-RLC-unb,Wye RLC unbalanced,wye,wye_series_rlc,wye_rlgamma_full_unbalanced,wye_rlgamma_full_unbalanced,wye_series,rlgamma,1,1,1,32.4807271126012,1.28409121005012e-14,3.42493083516611e-05,6.77236045021345e-15,9
+6,Y-RLC-noise,Wye RLC + noise,wye,wye_series_rlc,wye_rlgamma_full_unbalanced,wye_rlgamma_full_unbalanced,wye_series,rlgamma,1,1,1,32.4803334018174,0.00158765228687177,3.78998889760258e-05,0.000340778082186996,9
+7,D-GLC-extreme,Delta GLC extreme,stress,delta_parallel_glc,delta_glc_full_unbalanced,delta_glc_full_unbalanced,delta_parallel,glc,1,1,1,31.8616206836302,4.8972162237513e-15,4.85275455949271e-06,1.25208485554948e-14,9
+8,D-GLC-fund,Delta GLC fundamental,stress,delta_parallel_glc,delta_glc_full_unbalanced,delta_gl_pair_ab_bc,delta_parallel,gl,1,1,0.600682593856655,1.44869750464143,5.37061465831877e-16,5.69462070108209e-07,NaN,0
+9,D-GLC-noise60,Delta GLC + 60 dB noise,stress,delta_parallel_glc,delta_glc_full_unbalanced,delta_glc_full_unbalanced,delta_parallel,glc,1,1,1,31.8610612824469,0.00135238941622303,2.56617156748168e-05,0.000503344252006944,9

@@ -1,0 +1,73 @@
+CaseIndex,CaseId,ShortTitle,PanelTitle,Group,TruthModel,ExpectedCandidate,Parameter,ParameterGroup,Unit,Truth,MedianEstimate,Q25,Q75,NormalizedEstimate
+1,D-GL-bal,Delta GL balanced,"Delta: balanced GL",delta,delta_parallel_gl,delta_gl_balanced,G_{ab},dissipative,S,0.05,0.05,0.05,0.05,1
+1,D-GL-bal,Delta GL balanced,"Delta: balanced GL",delta,delta_parallel_gl,delta_gl_balanced,G_{bc},dissipative,S,0.05,0.05,0.05,0.05,1
+1,D-GL-bal,Delta GL balanced,"Delta: balanced GL",delta,delta_parallel_gl,delta_gl_balanced,G_{ca},dissipative,S,0.05,0.05,0.05,0.05,1
+1,D-GL-bal,Delta GL balanced,"Delta: balanced GL",delta,delta_parallel_gl,delta_gl_balanced,L_{ab},magnetic,H,0.08,0.08,0.08,0.08,1
+1,D-GL-bal,Delta GL balanced,"Delta: balanced GL",delta,delta_parallel_gl,delta_gl_balanced,L_{bc},magnetic,H,0.08,0.08,0.08,0.08,1
+1,D-GL-bal,Delta GL balanced,"Delta: balanced GL",delta,delta_parallel_gl,delta_gl_balanced,L_{ca},magnetic,H,0.08,0.08,0.08,0.08,1
+2,D-GL-unb,Delta GL unbalanced,"Delta: unbalanced GL",delta,delta_parallel_gl,delta_gl_full_unbalanced,G_{ab},dissipative,S,0.05,0.05,0.05,0.05,1
+2,D-GL-unb,Delta GL unbalanced,"Delta: unbalanced GL",delta,delta_parallel_gl,delta_gl_full_unbalanced,G_{bc},dissipative,S,0.0333333333333333,0.0333333333333333,0.0333333333333333,0.0333333333333334,0.999999999999999
+2,D-GL-unb,Delta GL unbalanced,"Delta: unbalanced GL",delta,delta_parallel_gl,delta_gl_full_unbalanced,G_{ca},dissipative,S,0.0666666666666667,0.0666666666666667,0.0666666666666666,0.0666666666666667,1
+2,D-GL-unb,Delta GL unbalanced,"Delta: unbalanced GL",delta,delta_parallel_gl,delta_gl_full_unbalanced,L_{ab},magnetic,H,0.08,0.08,0.08,0.08,1
+2,D-GL-unb,Delta GL unbalanced,"Delta: unbalanced GL",delta,delta_parallel_gl,delta_gl_full_unbalanced,L_{bc},magnetic,H,0.12,0.12,0.12,0.12,1
+2,D-GL-unb,Delta GL unbalanced,"Delta: unbalanced GL",delta,delta_parallel_gl,delta_gl_full_unbalanced,L_{ca},magnetic,H,0.06,0.0599999999999999,0.0599999999999999,0.0599999999999999,0.999999999999998
+3,D-GLC-noise,Delta GLC + noise,"Delta: GLC, noisy",delta,delta_parallel_glc,delta_glc_full_unbalanced,G_{ab},dissipative,S,0.05,0.0500000099230271,0.0499672680752586,0.0500343490977999,1.00000019846054
+3,D-GLC-noise,Delta GLC + noise,"Delta: GLC, noisy",delta,delta_parallel_glc,delta_glc_full_unbalanced,G_{bc},dissipative,S,0.0333333333333333,0.0333409890144381,0.0333115447293259,0.0333689615775968,1.00022967043314
+3,D-GLC-noise,Delta GLC + noise,"Delta: GLC, noisy",delta,delta_parallel_glc,delta_glc_full_unbalanced,G_{ca},dissipative,S,0.0666666666666667,0.0666623098768954,0.0666199207196854,0.066704313606074,0.999934648153431
+3,D-GLC-noise,Delta GLC + noise,"Delta: GLC, noisy",delta,delta_parallel_glc,delta_glc_full_unbalanced,L_{ab},magnetic,H,0.08,0.0799942181267411,0.0799231537895918,0.0800456194898208,0.999927726584264
+3,D-GLC-noise,Delta GLC + noise,"Delta: GLC, noisy",delta,delta_parallel_glc,delta_glc_full_unbalanced,L_{bc},magnetic,H,0.12,0.120015650222832,0.11984308041761,0.120186043499032,1.0001304185236
+3,D-GLC-noise,Delta GLC + noise,"Delta: GLC, noisy",delta,delta_parallel_glc,delta_glc_full_unbalanced,L_{ca},magnetic,H,0.06,0.0600063957397591,0.0599691283168701,0.0600324767347787,1.00010659566265
+3,D-GLC-noise,Delta GLC + noise,"Delta: GLC, noisy",delta,delta_parallel_glc,delta_glc_full_unbalanced,C_{ab},electric,F,8e-05,7.99996117504342e-05,7.99796937269649e-05,8.00242416071009e-05,0.999995146880427
+3,D-GLC-noise,Delta GLC + noise,"Delta: GLC, noisy",delta,delta_parallel_glc,delta_glc_full_unbalanced,C_{bc},electric,F,0.00012,0.000119996630734018,0.000119963238047479,0.000120034866725605,0.999971922783483
+3,D-GLC-noise,Delta GLC + noise,"Delta: GLC, noisy",delta,delta_parallel_glc,delta_glc_full_unbalanced,C_{ca},electric,F,6e-05,6.00051112552403e-05,5.99807263923996e-05,6.00315025050108e-05,1.00008518758734
+4,Y-RL-bal,Wye RL balanced,"Wye: balanced RL",wye,wye_series_rl,wye_rl_balanced,R_a,dissipative,ohm,0.8,0.800000000000002,0.8,0.800000000000006,1
+4,Y-RL-bal,Wye RL balanced,"Wye: balanced RL",wye,wye_series_rl,wye_rl_balanced,R_b,dissipative,ohm,0.8,0.800000000000002,0.8,0.800000000000006,1
+4,Y-RL-bal,Wye RL balanced,"Wye: balanced RL",wye,wye_series_rl,wye_rl_balanced,R_c,dissipative,ohm,0.8,0.800000000000002,0.8,0.800000000000006,1
+4,Y-RL-bal,Wye RL balanced,"Wye: balanced RL",wye,wye_series_rl,wye_rl_balanced,L_a,magnetic,H,0.005,0.005,0.005,0.005,1
+4,Y-RL-bal,Wye RL balanced,"Wye: balanced RL",wye,wye_series_rl,wye_rl_balanced,L_b,magnetic,H,0.005,0.005,0.005,0.005,1
+4,Y-RL-bal,Wye RL balanced,"Wye: balanced RL",wye,wye_series_rl,wye_rl_balanced,L_c,magnetic,H,0.005,0.005,0.005,0.005,1
+5,Y-RLC-unb,Wye RLC unbalanced,"Wye: unbalanced RLC",wye,wye_series_rlc,wye_rlgamma_full_unbalanced,R_a,dissipative,ohm,0.5,0.500000000000007,0.499999999999967,0.50000000000035,1.00000000000001
+5,Y-RLC-unb,Wye RLC unbalanced,"Wye: unbalanced RLC",wye,wye_series_rlc,wye_rlgamma_full_unbalanced,R_b,dissipative,ohm,1.2,1.20000000000004,1.19999999999998,1.20000000000024,1.00000000000003
+5,Y-RLC-unb,Wye RLC unbalanced,"Wye: unbalanced RLC",wye,wye_series_rlc,wye_rlgamma_full_unbalanced,R_c,dissipative,ohm,0.8,0.799999999999994,0.79999999999948,0.800000000000057,0.999999999999993
+5,Y-RLC-unb,Wye RLC unbalanced,"Wye: unbalanced RLC",wye,wye_series_rlc,wye_rlgamma_full_unbalanced,L_a,magnetic,H,0.005,0.00500000000000001,0.00499999999999998,0.00500000000000023,1
+5,Y-RLC-unb,Wye RLC unbalanced,"Wye: unbalanced RLC",wye,wye_series_rlc,wye_rlgamma_full_unbalanced,L_b,magnetic,H,0.008,0.00799999999999999,0.00799999999999967,0.00800000000000003,0.999999999999999
+5,Y-RLC-unb,Wye RLC unbalanced,"Wye: unbalanced RLC",wye,wye_series_rlc,wye_rlgamma_full_unbalanced,L_c,magnetic,H,0.003,0.003,0.00299999999999998,0.00300000000000001,1
+5,Y-RLC-unb,Wye RLC unbalanced,"Wye: unbalanced RLC",wye,wye_series_rlc,wye_rlgamma_full_unbalanced,C_a,electric,F,0.00045,0.00045,0.000449999999999968,0.000450000000000002,1
+5,Y-RLC-unb,Wye RLC unbalanced,"Wye: unbalanced RLC",wye,wye_series_rlc,wye_rlgamma_full_unbalanced,C_b,electric,F,0.00032,0.00032,0.000319999999999998,0.00032000000000002,1
+5,Y-RLC-unb,Wye RLC unbalanced,"Wye: unbalanced RLC",wye,wye_series_rlc,wye_rlgamma_full_unbalanced,C_c,electric,F,0.00068,0.000679999999999999,0.000679999999999999,0.000680000000000008,0.999999999999998
+6,Y-RLC-noise,Wye RLC + noise,"Wye: RLC, noisy",wye,wye_series_rlc,wye_rlgamma_full_unbalanced,R_a,dissipative,ohm,0.5,0.500646510917833,0.499026251017628,0.501970274109706,1.00129302183567
+6,Y-RLC-noise,Wye RLC + noise,"Wye: RLC, noisy",wye,wye_series_rlc,wye_rlgamma_full_unbalanced,R_b,dissipative,ohm,1.2,1.19932593611619,1.19705318324431,1.20196901139333,0.999438280096825
+6,Y-RLC-noise,Wye RLC + noise,"Wye: RLC, noisy",wye,wye_series_rlc,wye_rlgamma_full_unbalanced,R_c,dissipative,ohm,0.8,0.799344764627209,0.797820634517959,0.800962754234925,0.999180955784011
+6,Y-RLC-noise,Wye RLC + noise,"Wye: RLC, noisy",wye,wye_series_rlc,wye_rlgamma_full_unbalanced,L_a,magnetic,H,0.005,0.00500029816806865,0.00499859925974683,0.00500162819314868,1.00005963361373
+6,Y-RLC-noise,Wye RLC + noise,"Wye: RLC, noisy",wye,wye_series_rlc,wye_rlgamma_full_unbalanced,L_b,magnetic,H,0.008,0.00799926775296403,0.00799711662575308,0.00800189531923656,0.999908469120504
+6,Y-RLC-noise,Wye RLC + noise,"Wye: RLC, noisy",wye,wye_series_rlc,wye_rlgamma_full_unbalanced,L_c,magnetic,H,0.003,0.00300000967862729,0.00299867986194515,0.00300131841798572,1.0000032262091
+6,Y-RLC-noise,Wye RLC + noise,"Wye: RLC, noisy",wye,wye_series_rlc,wye_rlgamma_full_unbalanced,C_a,electric,F,0.00045,0.00044999732269511,0.000449842680282588,0.000450147185557065,0.999994050433578
+6,Y-RLC-noise,Wye RLC + noise,"Wye: RLC, noisy",wye,wye_series_rlc,wye_rlgamma_full_unbalanced,C_b,electric,F,0.00032,0.000320027595312414,0.000319954957893092,0.000320101660129344,1.00008623535129
+6,Y-RLC-noise,Wye RLC + noise,"Wye: RLC, noisy",wye,wye_series_rlc,wye_rlgamma_full_unbalanced,C_c,electric,F,0.00068,0.000679900284007926,0.000679591325775743,0.000680240217895159,0.999853358835185
+7,D-GLC-extreme,Delta GLC extreme,"Delta: extreme unbalance",stress,delta_parallel_glc,delta_glc_full_unbalanced,G_{ab},dissipative,S,0.025,0.0250000000000005,0.0249999999999995,0.0250000000000063,1.00000000000002
+7,D-GLC-extreme,Delta GLC extreme,"Delta: extreme unbalance",stress,delta_parallel_glc,delta_glc_full_unbalanced,G_{bc},dissipative,S,0.05,0.050000000000001,0.0499999999999992,0.0500000000000071,1.00000000000002
+7,D-GLC-extreme,Delta GLC extreme,"Delta: extreme unbalance",stress,delta_parallel_glc,delta_glc_full_unbalanced,G_{ca},dissipative,S,0.1,0.0999999999999994,0.0999999999999844,0.100000000000002,0.999999999999994
+7,D-GLC-extreme,Delta GLC extreme,"Delta: extreme unbalance",stress,delta_parallel_glc,delta_glc_full_unbalanced,L_{ab},magnetic,H,0.16,0.159999999999992,0.159999999999895,0.160000000000011,0.999999999999952
+7,D-GLC-extreme,Delta GLC extreme,"Delta: extreme unbalance",stress,delta_parallel_glc,delta_glc_full_unbalanced,L_{bc},magnetic,H,0.08,0.0800000000000013,0.0799999999999968,0.0800000000000288,1.00000000000002
+7,D-GLC-extreme,Delta GLC extreme,"Delta: extreme unbalance",stress,delta_parallel_glc,delta_glc_full_unbalanced,L_{ca},magnetic,H,0.04,0.04,0.0399999999999998,0.0400000000000005,1
+7,D-GLC-extreme,Delta GLC extreme,"Delta: extreme unbalance",stress,delta_parallel_glc,delta_glc_full_unbalanced,C_{ab},electric,F,4e-05,3.99999999999999e-05,3.99999999999995e-05,4.00000000000001e-05,0.999999999999997
+7,D-GLC-extreme,Delta GLC extreme,"Delta: extreme unbalance",stress,delta_parallel_glc,delta_glc_full_unbalanced,C_{bc},electric,F,8e-05,8e-05,7.99999999999997e-05,8.00000000000008e-05,1
+7,D-GLC-extreme,Delta GLC extreme,"Delta: extreme unbalance",stress,delta_parallel_glc,delta_glc_full_unbalanced,C_{ca},electric,F,0.00016,0.00016,0.00016,0.00016,1
+8,D-GLC-fund,Delta GLC fundamental,"Delta: low-rank excitation",stress,delta_parallel_glc,delta_glc_full_unbalanced,G_{ab},dissipative,S,0.05,NaN,NaN,NaN,NaN
+8,D-GLC-fund,Delta GLC fundamental,"Delta: low-rank excitation",stress,delta_parallel_glc,delta_glc_full_unbalanced,G_{bc},dissipative,S,0.0333333333333333,NaN,NaN,NaN,NaN
+8,D-GLC-fund,Delta GLC fundamental,"Delta: low-rank excitation",stress,delta_parallel_glc,delta_glc_full_unbalanced,G_{ca},dissipative,S,0.0666666666666667,NaN,NaN,NaN,NaN
+8,D-GLC-fund,Delta GLC fundamental,"Delta: low-rank excitation",stress,delta_parallel_glc,delta_glc_full_unbalanced,L_{ab},magnetic,H,0.08,NaN,NaN,NaN,NaN
+8,D-GLC-fund,Delta GLC fundamental,"Delta: low-rank excitation",stress,delta_parallel_glc,delta_glc_full_unbalanced,L_{bc},magnetic,H,0.12,NaN,NaN,NaN,NaN
+8,D-GLC-fund,Delta GLC fundamental,"Delta: low-rank excitation",stress,delta_parallel_glc,delta_glc_full_unbalanced,L_{ca},magnetic,H,0.06,NaN,NaN,NaN,NaN
+8,D-GLC-fund,Delta GLC fundamental,"Delta: low-rank excitation",stress,delta_parallel_glc,delta_glc_full_unbalanced,C_{ab},electric,F,8e-05,NaN,NaN,NaN,NaN
+8,D-GLC-fund,Delta GLC fundamental,"Delta: low-rank excitation",stress,delta_parallel_glc,delta_glc_full_unbalanced,C_{bc},electric,F,0.00012,NaN,NaN,NaN,NaN
+8,D-GLC-fund,Delta GLC fundamental,"Delta: low-rank excitation",stress,delta_parallel_glc,delta_glc_full_unbalanced,C_{ca},electric,F,6e-05,NaN,NaN,NaN,NaN
+9,D-GLC-noise60,Delta GLC + 60 dB noise,"Delta: GLC, 60 dB noise",stress,delta_parallel_glc,delta_glc_full_unbalanced,G_{ab},dissipative,S,0.05,0.0499731497064511,0.0498562235535241,0.0500878165978684,0.999462994129022
+9,D-GLC-noise60,Delta GLC + 60 dB noise,"Delta: GLC, 60 dB noise",stress,delta_parallel_glc,delta_glc_full_unbalanced,G_{bc},dissipative,S,0.0333333333333333,0.0333081467985319,0.0332191113891703,0.03343643292894,0.999244403955957
+9,D-GLC-noise60,Delta GLC + 60 dB noise,"Delta: GLC, 60 dB noise",stress,delta_parallel_glc,delta_glc_full_unbalanced,G_{ca},dissipative,S,0.0666666666666667,0.0666938854010715,0.066584829333456,0.066820744284674,1.00040828101607
+9,D-GLC-noise60,Delta GLC + 60 dB noise,"Delta: GLC, 60 dB noise",stress,delta_parallel_glc,delta_glc_full_unbalanced,L_{ab},magnetic,H,0.08,0.080050164945938,0.0798817594226881,0.0802328459185834,1.00062706182423
+9,D-GLC-noise60,Delta GLC + 60 dB noise,"Delta: GLC, 60 dB noise",stress,delta_parallel_glc,delta_glc_full_unbalanced,L_{bc},magnetic,H,0.12,0.119820620437638,0.119374859128474,0.120328742468417,0.998505170313651
+9,D-GLC-noise60,Delta GLC + 60 dB noise,"Delta: GLC, 60 dB noise",stress,delta_parallel_glc,delta_glc_full_unbalanced,L_{ca},magnetic,H,0.06,0.0600045911958549,0.059873091215613,0.0601458805048459,1.00007651993092
+9,D-GLC-noise60,Delta GLC + 60 dB noise,"Delta: GLC, 60 dB noise",stress,delta_parallel_glc,delta_glc_full_unbalanced,C_{ab},electric,F,8e-05,7.99888640231613e-05,7.99239727765958e-05,8.00843492707693e-05,0.999860800289516
+9,D-GLC-noise60,Delta GLC + 60 dB noise,"Delta: GLC, 60 dB noise",stress,delta_parallel_glc,delta_glc_full_unbalanced,C_{bc},electric,F,0.00012,0.000120015884610448,0.000119904073280091,0.000120132328196275,1.00013237175373
+9,D-GLC-noise60,Delta GLC + 60 dB noise,"Delta: GLC, 60 dB noise",stress,delta_parallel_glc,delta_glc_full_unbalanced,C_{ca},electric,F,6e-05,5.99784460541243e-05,5.99184709725794e-05,6.00574064240575e-05,0.999640767568738
