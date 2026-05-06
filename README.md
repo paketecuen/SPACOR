@@ -1,37 +1,94 @@
-# SPACOR Space Vectors for Parameter Identification of Non-Linear Circuits
+# SPACOR
 
-It proposes a systematic method for the identification of the load circuit parameters (say the R, L, and C elements) based only on the information of the instantaneous volt age and current measured at the point of common coupling (pcc). **Geometric Algebra (GA)** and concepts of differential geometry are used to produce a rigorous mathematical framework. The identification is formulated as a multidimensional geometrical problem that is solved conveniently by means of GA. Once the passive elements of the load have been identified, the active and reactive powers can be computed from first electromagnetic principles (Maxwell Equations). The theory is general and is verified with linear and nonlinear circuits. The paper shows single-phase circuits but the theory can be extended to three phase circuits. The method is easy to program and has shown to be very robust for all tested cases. Because of its generality, the method presented will find applications beyond electric circuits.
-https://electrica.ual.es/spacor
+Geometric time-domain load-equivalent identification from terminal voltage and
+current measurements.
 
-A discussion about it can be found in the paper "Determination of Instantaneous Powers from a Novel Time-Domain Parameter Identification Method of Non-Linear Single-Phase Circuits. Francisco G. Montoya, Francisco De Leon,  Franscico M. Arrabal-Campos, and Alfredo Alcayde. IEEE Transactions on Power Delivery. 2021"
-https://doi.org/10.1109/TPWRD.2021.3133069
+This repository is being organized as the public reproducibility package for
+the SPACOR line of work.  It separates the original 2021 single-phase material
+from the newer MATLAB framework used for three-phase and sampled-data
+identification studies.
 
-```bibtext
-@ARTICLE{9640464,
-  author={Montoya, Francisco G and De Leon, Francisco and Arrabal-Campos, Francisco M. and Alcayde, Alfredo},
-  journal={IEEE Transactions on Power Delivery}, 
-  title={Determination of Instantaneous Powers from a Novel Time-Domain Parameter Identification Method of Non-Linear Single-Phase Circuits}, 
-  year={2021},
-  volume={},
-  number={},
-  pages={1-1},
-  doi={10.1109/TPWRD.2021.3133069}}
-``` 
+## Repository Layout
 
-## EXAMPLES
+```text
+docs/2021-single-phase/   Original 2021 single-phase explanatory notes.
+matlab/+spacor/           Current public MATLAB API.
+matlab/legacy/runtime/    Validated research runtime used by the API.
+scripts/                  Public smoke and reproduction entry points.
+tests/                    Synthetic regression tests.
+docs/                     Public API, campaigns, and data policy.
+```
 
-[Case 1: Parallel RL load with Sinusoidal source](Case1.md)
+The files under `docs/2021-single-phase/` are preserved because they document
+the original theory and examples associated with the 2021 TPWRD paper.  The
+current implementation lives under `matlab/` and adds finite windows, matrix
+estimators, derivative/primitive reconstruction, three-wire model families,
+diagnostics, and measurement-degradation campaigns.
 
-[Case 2: Parallel RL load switching the resitive part with Sinusoidal source](Case2.md)
+## Data Policy
 
-[Case 3: Serie RL with Sinusoidal source](Case3.md)
+No private measurement data are included in this repository.  The public tests
+and campaigns generate synthetic signals locally.  Generated `.mat`, `.csv`,
+figures, logs, and result folders are ignored by Git.
 
-[Case 4: Mixed series and parallel circuit with sinusoidal source](Case4.md)
+See [docs/DATA_POLICY.md](docs/DATA_POLICY.md) and
+[docs/RELEASE_STRUCTURE.md](docs/RELEASE_STRUCTURE.md).
 
-[Case 5: Parallel RL with piecewise non-linear inductor](Case5.md)
+## Quick Start
 
-[Case 6: Parallel RLC with switching capacitor and resistor](Case6.md)
+From MATLAB:
 
-[Case 7: Series RLC with switching capacitor and resistor](Case7.md)
+```matlab
+cd /path/to/SPACOR
+startup_spacor
+run_public_smoke
+```
 
- 
+The smoke suite writes regenerated synthetic outputs under `results/`.  These
+files are intentionally not tracked.
+
+## Public API
+
+```matlab
+startup_spacor
+
+% Synthetic single-phase fixture
+[data, config, truth] = spacor.fixtures.singlephase_series_rl();
+report = spacor.singlephase.characterize(data, config, struct('candidateMode','lti'));
+
+% Synthetic three-wire fixture
+[data3, config3, truth3] = spacor.fixtures.threewire_delta_g();
+report3 = spacor.threewire.characterize(data3, config3, struct('candidateMode','mixed_blackbox'));
+```
+
+The main campaign entry points are:
+
+```matlab
+spacor.campaigns.run_singlephase_quick()
+spacor.campaigns.run_threewire_quick()
+spacor.campaigns.run_singlephase_degradation()
+spacor.campaigns.run_threewire_degradation()
+```
+
+See [docs/API.md](docs/API.md) and [docs/CAMPAIGNS.md](docs/CAMPAIGNS.md).
+
+## Citation
+
+The original single-phase theoretical formulation is described in:
+
+```bibtex
+@article{montoya2021spacor,
+  author  = {Montoya, Francisco G. and De Leon, Francisco and Arrabal-Campos, Francisco M. and Alcayde, Alfredo},
+  title   = {Determination of Instantaneous Powers from a Novel Time-Domain Parameter Identification Method of Non-Linear Single-Phase Circuits},
+  journal = {IEEE Transactions on Power Delivery},
+  year    = {2021},
+  doi     = {10.1109/TPWRD.2021.3133069}
+}
+```
+
+Additional publications and the three-phase manuscript will be added to the
+citation file as they are finalized.
+
+## License
+
+This fork preserves the upstream GPL-3.0 license.

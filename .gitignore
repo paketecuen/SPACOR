@@ -1,0 +1,46 @@
+# OS/editor noise
+.DS_Store
+._*
+*.asv
+*.m~
+*.swp
+
+# MATLAB generated data and private measurements
+*.mat
+*.fig
+*.mlx
+results/
+**/results/
+fixtures/synthetic/
+**/fixtures/synthetic/
+data/
+**/data/
+datasets/
+**/datasets/
+private_data/
+**/private_data/
+real_data/
+**/real_data/
+data_registry/
+**/data_registry/
+
+# Generated tables/figures from campaigns
+*.csv
+*.png
+*.jpg
+*.jpeg
+*.pdf
+!docs/**/*.png
+!docs/**/*.pdf
+
+# Python/cache artifacts occasionally used by figure tooling
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Logs and temporary reports
+*.log
+*.out
+tmp/
+temp/
