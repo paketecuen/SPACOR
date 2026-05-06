@@ -81,6 +81,11 @@ img {
   color: var(--blue);
 }
 
+.links a[aria-current="page"] {
+  color: var(--ink);
+  font-weight: 750;
+}
+
 main {
   max-width: var(--max);
   margin: 0 auto;
@@ -186,6 +191,16 @@ p {
 .panel p {
   margin-bottom: 0;
   color: var(--muted);
+}
+
+.notice {
+  max-width: 900px;
+  margin: 22px 0 0;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--blue);
+  border-radius: 6px;
+  background: var(--soft);
 }
 
 .figure-block {
@@ -312,6 +327,36 @@ tr:last-child td {
 
 .code code {
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+details {
+  margin: 18px 0 0;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+summary {
+  cursor: pointer;
+  color: var(--teal);
+  font-weight: 750;
+}
+
+.formula-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 8px 0;
+}
+
+.formula-scroll mjx-container {
+  min-width: max-content;
+}
+
+.formula-note {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 15px;
 }
 
 .list {

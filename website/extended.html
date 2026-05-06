@@ -3,164 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Geometric Time-Domain Three-Phase Identification: Online Material</title>
-  <style>
-    :root {
-      --ink: #172033;
-      --muted: #5e6a7d;
-      --line: #d9dee8;
-      --soft: #f6f8fb;
-      --accent: #0b5cad;
-      --accent-2: #7a3e9d;
-    }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--ink);
-      background: white;
-      line-height: 1.55;
-    }
-    main {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 32px 20px 80px;
-    }
-    header {
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 28px;
-      padding-bottom: 24px;
-    }
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 24px;
-      padding-bottom: 14px;
-      font-size: 15px;
-    }
-    h1 {
-      font-size: 34px;
-      line-height: 1.16;
-      margin: 0 0 12px;
-      letter-spacing: 0;
-    }
-    h2 {
-      font-size: 24px;
-      margin: 36px 0 12px;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 6px;
-    }
-    h3 {
-      font-size: 19px;
-      margin: 26px 0 8px;
-    }
-    p, li {
-      font-size: 16px;
-    }
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .lead {
-      color: var(--muted);
-      font-size: 18px;
-      max-width: 900px;
-    }
-    .notice {
-      background: var(--soft);
-      border: 1px solid var(--line);
-      border-left: 4px solid var(--accent);
-      padding: 14px 16px;
-      margin: 18px 0;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 14px;
-      margin: 18px 0;
-    }
-    .card {
-      border: 1px solid var(--line);
-      padding: 14px 16px;
-      background: #fff;
-      border-radius: 6px;
-    }
-    .card h3 {
-      margin-top: 0;
-    }
-    figure {
-      margin: 24px 0;
-      border: 1px solid var(--line);
-      padding: 12px;
-      background: #fff;
-    }
-    figure img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-      margin: 0 auto;
-    }
-    figcaption {
-      color: var(--muted);
-      font-size: 14px;
-      margin-top: 10px;
-    }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin: 16px 0;
-      font-size: 15px;
-    }
-    th, td {
-      border: 1px solid var(--line);
-      padding: 8px 10px;
-      text-align: left;
-      vertical-align: top;
-    }
-    th {
-      background: var(--soft);
-    }
-    code, pre {
-      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-    }
-    pre {
-      overflow-x: auto;
-      padding: 12px;
-      background: #111827;
-      color: #edf2f7;
-      border-radius: 6px;
-      font-size: 13px;
-    }
-    details {
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: 10px 12px;
-      margin: 14px 0;
-      background: #fff;
-    }
-    summary {
-      cursor: pointer;
-      font-weight: 650;
-      color: var(--accent-2);
-    }
-    .formula-scroll {
-      overflow-x: auto;
-      overflow-y: hidden;
-      padding: 8px 0;
-    }
-    .formula-scroll mjx-container {
-      min-width: max-content;
-    }
-    .formula-note {
-      color: var(--muted);
-      font-size: 14px;
-      margin: 8px 0 0;
-    }
-  </style>
+  <title>SPACOR Derivations | Online Material</title>
+  <meta name="description" content="Online derivations, symbolic coefficients, and extended figures for geometric time-domain three-phase load-equivalent identification.">
+  <link rel="stylesheet" href="assets/css/site.css">
   <script>
     window.MathJax = {
       tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
@@ -170,17 +15,23 @@
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 <body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="index.html">SPACOR</a>
+      <div class="links">
+        <a href="index.html#method">Method</a>
+        <a href="index.html#three-phase">Three-phase</a>
+        <a href="tests.html">Tests</a>
+        <a href="extended.html" aria-current="page">Derivations</a>
+        <a href="index.html#reproducibility">Reproducibility</a>
+        <a href="https://github.com/paketecuen/SPACOR">GitHub</a>
+      </div>
+    </nav>
+  </header>
+
 <main>
-  <nav aria-label="Site navigation">
-    <a href="index.html">SPACOR home</a>
-    <a href="#derivations">Derivations</a>
-    <a href="#implementation">Windowed implementation</a>
-    <a href="#energy">Energy criterion</a>
-    <a href="#figures">Extended figures</a>
-    <a href="tests.html">Extended tests</a>
-    <a href="https://github.com/paketecuen/SPACOR">GitHub repository</a>
-  </nav>
-  <header>
+  <section class="intro">
+    <p class="eyebrow">Online derivations and audit material</p>
     <h1>Geometric Time-Domain Identification of Three-Phase Load Equivalents</h1>
     <p class="lead">
       Online derivations, symbolic coefficients, reproducibility material, and
@@ -188,9 +39,14 @@
       This page is maintained as online material under
       <code>https://spacor.ual.es/</code>.
     </p>
-  </header>
+    <div class="actions">
+      <a class="button" href="#derivations">Open derivations</a>
+      <a class="button secondary" href="#implementation">Implementation</a>
+      <a class="button secondary" href="#figures">Figures</a>
+    </div>
+  </section>
 
-  <section>
+  <section class="section">
     <h2>Purpose</h2>
     <p>
       The printed paper keeps the main argument within the transaction page
@@ -208,10 +64,10 @@
     </div>
   </section>
 
-  <section>
+  <section class="section">
     <h2>Navigation</h2>
     <div class="grid">
-      <div class="card">
+      <article class="panel">
         <h3>Symbolic Coefficients</h3>
         <p>
           Expanded expressions for the delta-parallel and wye-series
@@ -221,25 +77,25 @@
           <a href="assets/docs/Paper1_SymbolicCoefficients.pdf">Rendered PDF</a><br>
           <a href="assets/docs/Paper1_SymbolicCoefficients_body.tex">LaTeX source</a>
         </p>
-      </div>
-      <div class="card">
+      </article>
+      <article class="panel">
         <h3>Figures</h3>
         <p>
           Additional campaign summaries, diagnostic maps, and human-readable
           waveform/parameter views are included below.
         </p>
-      </div>
-      <div class="card">
+      </article>
+      <article class="panel">
         <h3>Reproduction</h3>
         <p>
           The public release includes MATLAB scripts, synthetic campaign
           metadata, generated CSV summaries, and figure-generation routines.
         </p>
-      </div>
+      </article>
     </div>
   </section>
 
-  <section>
+  <section class="section">
     <h2 id="derivations">Three-Wire Geometric Derivations</h2>
 
     <h3>Delta Parallel Load Equivalent</h3>
@@ -448,7 +304,7 @@
     </p>
   </section>
 
-  <section>
+  <section class="section">
     <h2 id="implementation">Windowed Matrix Implementation</h2>
     <p>
       The analytical quotients above document the geometric origin of the
@@ -468,7 +324,7 @@
     </p>
   </section>
 
-  <section>
+  <section class="section">
     <h2 id="energy">Energy-Admissibility Criterion</h2>
     <p>
       A numerically fitted equivalent is accepted only if it closes the
@@ -490,7 +346,7 @@
     </p>
   </section>
 
-  <section>
+  <section id="identifiability" class="section">
     <h2>Identifiability Audit</h2>
     <table>
       <thead>
@@ -517,49 +373,53 @@
     </p>
   </section>
 
-  <section>
+  <section class="section">
     <h2 id="figures">Extended MATLAB Figures</h2>
 
-    <figure>
+    <figure class="figure-block">
       <img src="assets/figures/fig_supp_case_recovery_9cases.png" alt="Nine-case element recovery">
       <figcaption>Nine representative three-wire cases. Each panel reports recovered physical parameters normalized by known values.</figcaption>
     </figure>
 
-    <figure>
+    <figure class="figure-block">
       <img src="assets/figures/fig_supp_case_error_and_coverage.png" alt="Nine-case error and coverage">
       <figcaption>Element-wise parameter errors, selected-window coverage, and median conditioning for the nine-case campaign.</figcaption>
     </figure>
 
-    <figure>
+    <figure class="figure-block">
       <img src="assets/figures/fig_supp_case_diagnostic_summary.png" alt="Diagnostic summary">
       <figcaption>Summary diagnostics: median condition number, terminal power residual, and energy residual.</figcaption>
     </figure>
 
-    <figure>
+    <figure class="figure-block">
       <img src="assets/figures/fig_supp_window_diagnostics_9cases.png" alt="Window diagnostics">
       <figcaption>Window-by-window diagnostics across the observation horizon.</figcaption>
     </figure>
 
-    <figure>
+    <figure class="figure-block">
       <img src="assets/figures/fig_supp_degradation_heatmaps.png" alt="Degradation heat maps">
       <figcaption>Measurement-chain degradation heat maps for the three-wire delta parallel RLC stress test.</figcaption>
     </figure>
 
-    <figure>
+    <figure class="figure-block">
       <img src="assets/figures/fig_supp_degradation_parameter_cloud.png" alt="Degradation parameter cloud">
       <figcaption>Parameter clouds under measurement-chain degradations.</figcaption>
     </figure>
 
-    <figure>
+    <figure class="figure-block">
       <img src="assets/figures/fig_supp_human_D_GLC_noise_4x1.png" alt="Delta RLC noisy human-readable view">
       <figcaption>Four-panel human-readable view for the noisy delta parallel RLC case.</figcaption>
     </figure>
 
-    <figure>
+    <figure class="figure-block">
       <img src="assets/figures/fig_supp_human_Y_RLC_noise_4x1.png" alt="Wye RLC noisy human-readable view">
       <figcaption>Four-panel human-readable view for the noisy wye series RLC case.</figcaption>
     </figure>
   </section>
 </main>
+
+  <footer class="footer">
+    SPACOR online derivations. Universidad de Almeria. Code released under GPL-3.0.
+  </footer>
 </body>
 </html>
